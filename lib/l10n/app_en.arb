@@ -1,0 +1,148 @@
+{
+  "@@locale": "en",
+  "appName": "Field Service App",
+  "@appName": {
+    "description": "The application name"
+  },
+
+  "ok": "OK",
+  "@ok": { "description": "Generic confirmation button" },
+
+  "cancel": "Cancel",
+  "@cancel": { "description": "Generic cancel button" },
+
+  "confirm": "Confirm",
+  "@confirm": { "description": "Generic confirm button" },
+
+  "save": "Save",
+  "@save": { "description": "Save action" },
+
+  "delete": "Delete",
+  "@delete": { "description": "Delete action" },
+
+  "edit": "Edit",
+  "@edit": { "description": "Edit action" },
+
+  "add": "Add",
+  "@add": { "description": "Add action" },
+
+  "search": "Search",
+  "@search": { "description": "Search placeholder / label" },
+
+  "filter": "Filter",
+  "@filter": { "description": "Filter action" },
+
+  "retry": "Retry",
+  "@retry": { "description": "Retry action after error" },
+
+  "close": "Close",
+  "@close": { "description": "Close action" },
+
+  "back": "Back",
+  "@back": { "description": "Go back" },
+
+  "next": "Next",
+  "@next": { "description": "Go to next step" },
+
+  "done": "Done",
+  "@done": { "description": "Mark as done / finish" },
+
+  "loading": "Loading...",
+  "@loading": { "description": "Loading indicator text" },
+
+  "submit": "Submit",
+  "@submit": { "description": "Submit form" },
+
+  "login": "Log In",
+  "@login": { "description": "Login button / page title" },
+
+  "logout": "Log Out",
+  "@logout": { "description": "Logout button" },
+
+  "register": "Register",
+  "@register": { "description": "Registration button / page title" },
+
+  "email": "Email",
+  "@email": { "description": "Email field label" },
+
+  "password": "Password",
+  "@password": { "description": "Password field label" },
+
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": { "description": "Forgot password link" },
+
+  "username": "Username",
+  "@username": { "description": "Username field label" },
+
+  "errorGeneral": "Something went wrong. Please try again.",
+  "@errorGeneral": { "description": "Generic error message" },
+
+  "errorNetwork": "No internet connection. Please check your network.",
+  "@errorNetwork": { "description": "Network error message" },
+
+  "errorServer": "Server error. Please try again later.",
+  "@errorServer": { "description": "Server error message" },
+
+  "errorUnauthorized": "You are not authorized. Please log in again.",
+  "@errorUnauthorized": { "description": "Unauthorized error message" },
+
+  "errorNotFound": "The requested item was not found.",
+  "@errorNotFound": { "description": "Not found error message" },
+
+  "errorTimeout": "Request timed out. Please try again.",
+  "@errorTimeout": { "description": "Timeout error message" },
+
+  "errorValidationRequired": "This field is required.",
+  "@errorValidationRequired": { "description": "Required field validation" },
+
+  "errorValidationEmail": "Please enter a valid email address.",
+  "@errorValidationEmail": { "description": "Email validation error" },
+
+  "errorValidationPassword": "Password must be at least 8 characters.",
+  "@errorValidationPassword": { "description": "Password validation error" },
+
+  "navHome": "Home",
+  "@navHome": { "description": "Home navigation label" },
+
+  "navProfile": "Profile",
+  "@navProfile": { "description": "Profile navigation label" },
+
+  "navSettings": "Settings",
+  "@navSettings": { "description": "Settings navigation label" },
+
+  "navNotifications": "Notifications",
+  "@navNotifications": { "description": "Notifications navigation label" },
+
+  "settings": "Settings",
+  "@settings": { "description": "Settings page title" },
+
+  "theme": "Theme",
+  "@theme": { "description": "Theme setting label" },
+
+  "themeLight": "Light",
+  "@themeLight": { "description": "Light theme option" },
+
+  "themeDark": "Dark",
+  "@themeDark": { "description": "Dark theme option" },
+
+  "themeSystem": "System Default",
+  "@themeSystem": { "description": "System theme option" },
+
+  "language": "Language",
+  "@language": { "description": "Language setting label" },
+
+  "languageEnglish": "English",
+  "@languageEnglish": { "description": "English language option" },
+
+  "languageArabic": "Arabic",
+  "@languageArabic": { "description": "Arabic language option" },
+
+  "emptyStateDefault": "Nothing here yet.",
+  "@emptyStateDefault": { "description": "Default empty state message" },
+
+  "emptyStateSearch": "No results found.",
+  "@emptyStateSearch": { "description": "Search empty state message" },
+
+  "emptyStateNotifications": "You have no notifications.",
+  "@emptyStateNotifications": { "description": "Notifications empty state" }
+}

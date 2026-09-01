@@ -1,0 +1,148 @@
+{
+  "@@locale": "ar",
+  "appName": "تطبيق الخدمة الميدانية",
+  "@appName": {
+    "description": "The application name"
+  },
+
+  "ok": "حسناً",
+  "@ok": { "description": "Generic confirmation button" },
+
+  "cancel": "إلغاء",
+  "@cancel": { "description": "Generic cancel button" },
+
+  "confirm": "تأكيد",
+  "@confirm": { "description": "Generic confirm button" },
+
+  "save": "حفظ",
+  "@save": { "description": "Save action" },
+
+  "delete": "حذف",
+  "@delete": { "description": "Delete action" },
+
+  "edit": "تعديل",
+  "@edit": { "description": "Edit action" },
+
+  "add": "إضافة",
+  "@add": { "description": "Add action" },
+
+  "search": "بحث",
+  "@search": { "description": "Search placeholder / label" },
+
+  "filter": "تصفية",
+  "@filter": { "description": "Filter action" },
+
+  "retry": "إعادة المحاولة",
+  "@retry": { "description": "Retry action after error" },
+
+  "close": "إغلاق",
+  "@close": { "description": "Close action" },
+
+  "back": "رجوع",
+  "@back": { "description": "Go back" },
+
+  "next": "التالي",
+  "@next": { "description": "Go to next step" },
+
+  "done": "تم",
+  "@done": { "description": "Mark as done / finish" },
+
+  "loading": "جارٍ التحميل...",
+  "@loading": { "description": "Loading indicator text" },
+
+  "submit": "إرسال",
+  "@submit": { "description": "Submit form" },
+
+  "login": "تسجيل الدخول",
+  "@login": { "description": "Login button / page title" },
+
+  "logout": "تسجيل الخروج",
+  "@logout": { "description": "Logout button" },
+
+  "register": "إنشاء حساب",
+  "@register": { "description": "Registration button / page title" },
+
+  "email": "البريد الإلكتروني",
+  "@email": { "description": "Email field label" },
+
+  "password": "كلمة المرور",
+  "@password": { "description": "Password field label" },
+
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "@forgotPassword": { "description": "Forgot password link" },
+
+  "username": "اسم المستخدم",
+  "@username": { "description": "Username field label" },
+
+  "errorGeneral": "حدث خطأ ما. يرجى المحاولة مجدداً.",
+  "@errorGeneral": { "description": "Generic error message" },
+
+  "errorNetwork": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.",
+  "@errorNetwork": { "description": "Network error message" },
+
+  "errorServer": "خطأ في الخادم. يرجى المحاولة لاحقاً.",
+  "@errorServer": { "description": "Server error message" },
+
+  "errorUnauthorized": "غير مصرح لك. يرجى تسجيل الدخول مجدداً.",
+  "@errorUnauthorized": { "description": "Unauthorized error message" },
+
+  "errorNotFound": "العنصر المطلوب غير موجود.",
+  "@errorNotFound": { "description": "Not found error message" },
+
+  "errorTimeout": "انتهت مهلة الطلب. يرجى المحاولة مجدداً.",
+  "@errorTimeout": { "description": "Timeout error message" },
+
+  "errorValidationRequired": "هذا الحقل مطلوب.",
+  "@errorValidationRequired": { "description": "Required field validation" },
+
+  "errorValidationEmail": "يرجى إدخال بريد إلكتروني صحيح.",
+  "@errorValidationEmail": { "description": "Email validation error" },
+
+  "errorValidationPassword": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+  "@errorValidationPassword": { "description": "Password validation error" },
+
+  "navHome": "الرئيسية",
+  "@navHome": { "description": "Home navigation label" },
+
+  "navProfile": "الملف الشخصي",
+  "@navProfile": { "description": "Profile navigation label" },
+
+  "navSettings": "الإعدادات",
+  "@navSettings": { "description": "Settings navigation label" },
+
+  "navNotifications": "الإشعارات",
+  "@navNotifications": { "description": "Notifications navigation label" },
+
+  "settings": "الإعدادات",
+  "@settings": { "description": "Settings page title" },
+
+  "theme": "المظهر",
+  "@theme": { "description": "Theme setting label" },
+
+  "themeLight": "فاتح",
+  "@themeLight": { "description": "Light theme option" },
+
+  "themeDark": "داكن",
+  "@themeDark": { "description": "Dark theme option" },
+
+  "themeSystem": "افتراضي النظام",
+  "@themeSystem": { "description": "System theme option" },
+
+  "language": "اللغة",
+  "@language": { "description": "Language setting label" },
+
+  "languageEnglish": "الإنجليزية",
+  "@languageEnglish": { "description": "English language option" },
+
+  "languageArabic": "العربية",
+  "@languageArabic": { "description": "Arabic language option" },
+
+  "emptyStateDefault": "لا يوجد شيء هنا بعد.",
+  "@emptyStateDefault": { "description": "Default empty state message" },
+
+  "emptyStateSearch": "لا توجد نتائج.",
+  "@emptyStateSearch": { "description": "Search empty state message" },
+
+  "emptyStateNotifications": "ليس لديك إشعارات.",
+  "@emptyStateNotifications": { "description": "Notifications empty state" }
+}

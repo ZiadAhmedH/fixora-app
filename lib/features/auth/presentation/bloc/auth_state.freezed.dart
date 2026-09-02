@@ -20,6 +20,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -28,6 +30,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -36,6 +40,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -45,6 +51,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -53,6 +61,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -61,6 +71,8 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -133,6 +145,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -145,6 +159,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -157,6 +173,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -173,6 +191,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -185,6 +205,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -197,6 +219,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -212,6 +236,280 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements AuthState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingEmailImplCopyWith<$Res> {
+  factory _$$LoadingEmailImplCopyWith(
+    _$LoadingEmailImpl value,
+    $Res Function(_$LoadingEmailImpl) then,
+  ) = __$$LoadingEmailImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingEmailImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingEmailImpl>
+    implements _$$LoadingEmailImplCopyWith<$Res> {
+  __$$LoadingEmailImplCopyWithImpl(
+    _$LoadingEmailImpl _value,
+    $Res Function(_$LoadingEmailImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingEmailImpl implements _LoadingEmail {
+  const _$LoadingEmailImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.loadingEmail()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingEmailImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String message) failure,
+  }) {
+    return loadingEmail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String message)? failure,
+  }) {
+    return loadingEmail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (loadingEmail != null) {
+      return loadingEmail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return loadingEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return loadingEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (loadingEmail != null) {
+      return loadingEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingEmail implements AuthState {
+  const factory _LoadingEmail() = _$LoadingEmailImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingGoogleImplCopyWith<$Res> {
+  factory _$$LoadingGoogleImplCopyWith(
+    _$LoadingGoogleImpl value,
+    $Res Function(_$LoadingGoogleImpl) then,
+  ) = __$$LoadingGoogleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingGoogleImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingGoogleImpl>
+    implements _$$LoadingGoogleImplCopyWith<$Res> {
+  __$$LoadingGoogleImplCopyWithImpl(
+    _$LoadingGoogleImpl _value,
+    $Res Function(_$LoadingGoogleImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingGoogleImpl implements _LoadingGoogle {
+  const _$LoadingGoogleImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.loadingGoogle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingGoogleImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String message) failure,
+  }) {
+    return loadingGoogle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String message)? failure,
+  }) {
+    return loadingGoogle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String message)? failure,
+    required TResult orElse(),
+  }) {
+    if (loadingGoogle != null) {
+      return loadingGoogle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return loadingGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return loadingGoogle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (loadingGoogle != null) {
+      return loadingGoogle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingGoogle implements AuthState {
+  const factory _LoadingGoogle() = _$LoadingGoogleImpl;
 }
 
 /// @nodoc
@@ -258,6 +556,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -270,6 +570,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -282,6 +584,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -298,6 +602,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -310,6 +616,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -322,6 +630,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -410,6 +720,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -422,6 +734,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -434,6 +748,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -450,6 +766,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -462,6 +780,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -474,6 +794,8 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -544,6 +866,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -556,6 +880,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -568,6 +894,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -584,6 +912,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -596,6 +926,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -608,6 +940,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
@@ -696,6 +1030,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingGoogle,
     required TResult Function() loading,
     required TResult Function(AppUser user) authenticated,
     required TResult Function() unauthenticated,
@@ -708,6 +1044,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingGoogle,
     TResult? Function()? loading,
     TResult? Function(AppUser user)? authenticated,
     TResult? Function()? unauthenticated,
@@ -720,6 +1058,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingGoogle,
     TResult Function()? loading,
     TResult Function(AppUser user)? authenticated,
     TResult Function()? unauthenticated,
@@ -736,6 +1076,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingGoogle value) loadingGoogle,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
@@ -748,6 +1090,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingGoogle value)? loadingGoogle,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
@@ -760,6 +1104,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingGoogle value)? loadingGoogle,
     TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,

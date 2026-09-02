@@ -72,7 +72,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
       },
       loginWithEmail: (e) async {
-        emit(const AuthState.loading());
+        emit(const AuthState.loadingEmail());
         final result = await _loginWithEmail(
           email: e.email,
           password: e.password,
@@ -83,7 +83,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
       },
       loginWithGoogle: (e) async {
-        emit(const AuthState.loading());
+        emit(const AuthState.loadingGoogle());
         final result = await _loginWithGoogle(role: e.role);
         result.fold(
           (failure) => emit(AuthState.failure(message: failure.message)),

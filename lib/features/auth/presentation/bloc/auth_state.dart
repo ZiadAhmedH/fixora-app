@@ -9,7 +9,13 @@ sealed class AuthState with _$AuthState {
   /// Initial state — auth status unknown (before startup check).
   const factory AuthState.initial() = _Initial;
 
-  /// Any auth operation is in progress.
+  /// Email / password sign-in is in progress.
+  const factory AuthState.loadingEmail() = _LoadingEmail;
+
+  /// Google sign-in is in progress.
+  const factory AuthState.loadingGoogle() = _LoadingGoogle;
+
+  /// Generic loading (startup check, logout, register, etc.).
   const factory AuthState.loading() = _Loading;
 
   /// User is authenticated.

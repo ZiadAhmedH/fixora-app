@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth;
+import 'package:flutter/services.dart' show PlatformException;
 
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
@@ -33,8 +34,23 @@ class AuthRepositoryImpl implements AuthRepository {
       return Failure.server(message: e.message);
     } else if (e is NetworkException) {
       return Failure.network(message: e.message);
+    } else if (e is PlatformException) {
+      // google_sign_in throws PlatformException on config errors
+      // e.g. missing SHA-1 / OAuth client in google-services.json
+      final msg = switch (e.code) {
+        'sign_in_failed' =>
+          'Google Sign-In failed. Ensure SHA-1 fingerprint is '
+          'registered in Firebase Console.',
+        'network_error' => 'Network error. Please check your connection.',
+        'sign_in_canceled' => 'Google sign-in was cancelled.',
+        _ => 'Google Sign-In error: ${e.message ?? e.code}',
+      };
+      return Failure.server(message: msg);
     } else {
-      return const Failure.unexpected();
+      return Failure.unexpected(
+        message: 'Unexpected error: ${e.runtimeType}. '
+            'Check Firebase configuration.',
+      );
     }
   }
 

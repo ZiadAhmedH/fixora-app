@@ -65,7 +65,7 @@ class PrimaryAuthButton extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
-                    fontSize: 15,
+                    fontSize: 12,
                     letterSpacing: 0.3,
                   ),
                 ),

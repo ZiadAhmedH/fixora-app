@@ -7,9 +7,7 @@ import '../../../../shared/blocs/locale/locale_bloc.dart';
 
 /// Section 1 — Gradient hero panel for the register screen.
 class RegisterHeroSection extends StatelessWidget {
-  final Size size;
-
-  const RegisterHeroSection({super.key, required this.size});
+  const RegisterHeroSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +15,21 @@ class RegisterHeroSection extends StatelessWidget {
     final locale = context.select((LocaleBloc b) => b.state.locale);
     final isAr = locale.languageCode == 'ar';
 
+    // ── Responsive values derived from screen height ──────────────────
+    final mq = MediaQuery.of(context);
+    final sh = mq.size.height;
+
+    // Logo slightly smaller than login hero (register has more form content)
+    final logoSize = (sh * 0.12).clamp(42.0, 64.0);
+
+    final gapSmall = (sh * 0.010).clamp(4.0, 10.0);
+    final gapMedium = (sh * 0.014).clamp(6.0, 14.0);
+
+    final titleSize = (sh * 0.030).clamp(18.0, 26.0);
+    final subtitleSize = (sh * 0.016).clamp(11.0, 14.0);
+
     return Container(
       width: double.infinity,
-      height: size.height * 0.28,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF00BFA6), Color(0xFF00897B)],
@@ -30,25 +40,28 @@ class RegisterHeroSection extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: (sh * 0.015).clamp(8.0, 18.0),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min, // shrink-wrap; no overflow possible
             children: [
-              // ── Language switcher pill ────────────────────────────────
+              // ── Language switcher pill ──────────────────────────────
               Align(
                 alignment: AlignmentDirectional.topEnd,
                 child: _LanguageSwitcherButton(isAr: isAr),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: gapSmall),
 
-              // ── Logo ─────────────────────────────────────────────
+              // ── Logo ───────────────────────────────────────────────
               Container(
-                width: 58,
-                height: 58,
+                width: logoSize,
+                height: logoSize,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(logoSize * 0.27),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.15),
@@ -57,32 +70,34 @@ class RegisterHeroSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(logoSize * 0.12),
                 child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: gapMedium),
 
-              // ── Title ────────────────────────────────────────────────
+              // ── Title ───────────────────────────────────────────────
               Text(
                 l10n.createAccount,
-                style: const TextStyle(
-                  fontSize: 24,
+                style: TextStyle(
+                  fontSize: titleSize,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                   height: 1.2,
                   letterSpacing: -0.3,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: gapSmall),
 
-              // ── Subtitle ─────────────────────────────────────────────
+              // ── Subtitle ────────────────────────────────────────────
               Text(
                 l10n.joinPlatform,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: subtitleSize,
                   color: Colors.white.withValues(alpha: 0.82),
                   fontWeight: FontWeight.w400,
                 ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),

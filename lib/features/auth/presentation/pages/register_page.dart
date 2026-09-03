@@ -77,7 +77,6 @@ class _RegisterPageState extends State<RegisterPage>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
       backgroundColor:
@@ -114,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage>
         child: Column(
           children: [
             // ── Section 1: Hero / Branding ──────────────────────────────
-            RegisterHeroSection(size: size),
+            RegisterHeroSection(),
 
             // ── Section 2: Form Card ────────────────────────────────────
             Expanded(

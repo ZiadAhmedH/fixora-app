@@ -64,7 +64,6 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
       backgroundColor: isDark
@@ -88,7 +87,7 @@ class _LoginPageState extends State<LoginPage>
         },
         child: Column(
           children: [
-            LoginHeroSection(size: size),
+            LoginHeroSection(),
 
             Expanded(
               child: FadeTransition(

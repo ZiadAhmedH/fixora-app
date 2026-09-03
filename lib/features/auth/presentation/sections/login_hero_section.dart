@@ -6,9 +6,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/blocs/locale/locale_bloc.dart';
 
 class LoginHeroSection extends StatelessWidget {
-  final Size size;
-
-  const LoginHeroSection({super.key, required this.size});
+  const LoginHeroSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +14,24 @@ class LoginHeroSection extends StatelessWidget {
     final locale = context.select((LocaleBloc b) => b.state.locale);
     final isAr = locale.languageCode == 'ar';
 
+    // ── Responsive values derived from screen height ──────────────────
+    final mq = MediaQuery.of(context);
+    final sh = mq.size.height;
+
+    // Logo size: 14% of screen height, clamped between 48–72 px
+    final logoSize = (sh * 0.14).clamp(48.0, 72.0);
+
+    // Vertical spacing scales with screen: tight on small, relaxed on large
+    final gapSmall = (sh * 0.010).clamp(4.0, 10.0);
+    final gapMedium = (sh * 0.016).clamp(8.0, 16.0);
+
+    // Font sizes
+    final titleSize = (sh * 0.034).clamp(20.0, 28.0);
+    final taglineSize = (sh * 0.018).clamp(12.0, 15.0);
+    final subtitleSize = (sh * 0.016).clamp(11.0, 14.0);
+
     return Container(
       width: double.infinity,
-      height: size.height * 0.32,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF00BFA6), Color(0xFF00897B)],
@@ -29,25 +42,28 @@ class LoginHeroSection extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: (sh * 0.018).clamp(10.0, 20.0),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min, // shrink-wrap; no overflow possible
             children: [
-              // ── Language switcher pill ────────────────────────────────
+              // ── Language switcher pill ──────────────────────────────
               Align(
                 alignment: AlignmentDirectional.topEnd,
                 child: _LanguageSwitcherButton(isAr: isAr),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: gapSmall),
 
-              // ── Logo ─────────────────────────────────────────────
+              // ── Logo ───────────────────────────────────────────────
               Container(
-                width: 64,
-                height: 64,
+                width: logoSize,
+                height: logoSize,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(logoSize * 0.28),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.15),
@@ -56,46 +72,47 @@ class LoginHeroSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: Image.asset(AppAssets.logo, fit: BoxFit.cover),
-                ),
+                padding: EdgeInsets.all(logoSize * 0.12),
+                child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
               ),
-              const SizedBox(height: 14),
+              SizedBox(height: gapMedium),
 
-              // ── Title ────────────────────────────────────────────────
+              // ── Title ───────────────────────────────────────────────
               Text(
                 l10n.welcomeBack,
-                style: const TextStyle(
-                  fontSize: 26,
+                style: TextStyle(
+                  fontSize: titleSize,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                   height: 1.2,
                   letterSpacing: -0.3,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: gapSmall),
 
-              // ── Tagline ──────────────────────────────────────────────
+              // ── Tagline ─────────────────────────────────────────────
               Text(
                 l10n.fastServiceFairPrices,
-                style: const TextStyle(
-                  fontSize: 14,
+                style: TextStyle(
+                  fontSize: taglineSize,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                   letterSpacing: 0.2,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 3),
+              SizedBox(height: gapSmall * 0.5),
 
-              // ── Subtitle ─────────────────────────────────────────────
+              // ── Subtitle ────────────────────────────────────────────
               Text(
                 l10n.signInToAccount,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: subtitleSize,
                   color: Colors.white.withValues(alpha: 0.80),
                   fontWeight: FontWeight.w400,
                 ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),

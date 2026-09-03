@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 /// All colors are defined here — never hardcode colors elsewhere.
 abstract final class AppColors {
   // ── Brand / Primary ───────────────────────────────────────
-  static const Color primary = Color(0xFF1565C0);        // deep blue
-  static const Color primaryLight = Color(0xFF5E92F3);
-  static const Color primaryDark = Color(0xFF003C8F);
+  static const Color primary = Color(0xFF00BFA6);        // teal
+  static const Color primaryLight = Color(0xFFA7F3D0);   // mint
+  static const Color primaryDark = Color(0xFF00897B);    // dark teal
 
   // ── Secondary / Accent ────────────────────────────────────
-  static const Color secondary = Color(0xFF00897B);      // teal
-  static const Color secondaryLight = Color(0xFF4EBAAA);
-  static const Color secondaryDark = Color(0xFF005B4F);
+  static const Color secondary = Color(0xFF00BFA6);      // teal
+  static const Color secondaryLight = Color(0xFFA7F3D0); // mint
+  static const Color secondaryDark = Color(0xFF00695C);  // deep teal
 
   // ── Semantic ──────────────────────────────────────────────
   static const Color success = Color(0xFF2E7D32);

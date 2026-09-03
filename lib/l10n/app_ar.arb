@@ -144,5 +144,98 @@
   "@emptyStateSearch": { "description": "Search empty state message" },
 
   "emptyStateNotifications": "ليس لديك إشعارات.",
-  "@emptyStateNotifications": { "description": "Notifications empty state" }
+  "@emptyStateNotifications": { "description": "Notifications empty state" },
+
+  "welcomeBack": "أهلاً بعودتك",
+  "@welcomeBack": { "description": "Login hero title" },
+
+  "fastServiceFairPrices": "خدمة سريعة .. أسعار عادلة",
+  "@fastServiceFairPrices": { "description": "Login hero tagline" },
+
+  "signInToAccount": "سجّل دخولك إلى حساب Fixora",
+  "@signInToAccount": { "description": "Login hero subtitle" },
+
+  "credentials": "بيانات الدخول",
+  "@credentials": { "description": "Login form section label" },
+
+  "signIn": "تسجيل الدخول",
+  "@signIn": { "description": "Sign in button label" },
+
+  "orContinueWith": "أو تابع بواسطة",
+  "@orContinueWith": { "description": "Divider text before social login" },
+
+  "continueWithGoogle": "المتابعة بواسطة Google",
+  "@continueWithGoogle": { "description": "Google sign-in button text" },
+
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "@dontHaveAccount": { "description": "Prompt to navigate to register" },
+
+  "createAccount": "إنشاء حساب",
+  "@createAccount": { "description": "Register button label" },
+
+  "joinPlatform": "انضم إلى منصة الخدمة الميدانية",
+  "@joinPlatform": { "description": "Register hero subtitle" },
+
+  "iAmRegisteringAs": "أسجّل بوصفي",
+  "@iAmRegisteringAs": { "description": "Role section label" },
+
+  "accountDetails": "تفاصيل الحساب",
+  "@accountDetails": { "description": "Account details section label" },
+
+  "fullName": "الاسم الكامل",
+  "@fullName": { "description": "Full name field label" },
+
+  "fullNameHint": "محمد علي",
+  "@fullNameHint": { "description": "Full name field hint" },
+
+  "confirmPassword": "تأكيد كلمة المرور",
+  "@confirmPassword": { "description": "Confirm password field label" },
+
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  "@alreadyHaveAccount": { "description": "Prompt to navigate to login" },
+
+  "roleClient": "عميل",
+  "@roleClient": { "description": "Client role label" },
+
+  "roleClientSubtitle": "طلب خدمات",
+  "@roleClientSubtitle": { "description": "Client role subtitle" },
+
+  "roleTechnician": "فني",
+  "@roleTechnician": { "description": "Technician role label" },
+
+  "roleTechnicianSubtitle": "تقديم خدمات",
+  "@roleTechnicianSubtitle": { "description": "Technician role subtitle" },
+
+  "switchToArabic": "العربية",
+  "@switchToArabic": { "description": "Button to switch to Arabic" },
+
+  "switchToEnglish": "English",
+  "@switchToEnglish": { "description": "Button to switch to English" },
+
+  "enterYourEmail": "أدخل بريدك الإلكتروني",
+  "@enterYourEmail": { "description": "Email validation empty error" },
+
+  "invalidEmail": "بريد إلكتروني غير صحيح",
+  "@invalidEmail": { "description": "Email format validation error" },
+
+  "enterYourPassword": "أدخل كلمة مرورك",
+  "@enterYourPassword": { "description": "Password validation empty error" },
+
+  "minSixChars": "دون 6 أحرف على الأقل",
+  "@minSixChars": { "description": "Password minimum length error" },
+
+  "enterYourName": "أدخل اسمك",
+  "@enterYourName": { "description": "Name validation empty error" },
+
+  "nameTooShort": "الاسم قصير جداً",
+  "@nameTooShort": { "description": "Name minimum length error" },
+
+  "enterAPassword": "أدخل كلمة مرور",
+  "@enterAPassword": { "description": "Register password validation empty error" },
+
+  "confirmYourPassword": "أكد كلمة المرور",
+  "@confirmYourPassword": { "description": "Confirm password validation empty error" },
+
+  "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" }
 }

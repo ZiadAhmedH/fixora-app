@@ -27,11 +27,12 @@ abstract final class AppRouter {
         return authBloc.state.map(
           initial: (_) => null, // Wait for checkAuthStatus to resolve
           loading: (_) => null,
+          loadingEmail: (_) => null,
+          loadingGoogle: (_) => null,
+          registerSuccess: (_) => null,
           authenticated: (_) => isOnAuthRoute ? RouteNames.home : null,
           unauthenticated: (_) => isOnAuthRoute ? null : RouteNames.login,
           failure: (_) => isOnAuthRoute ? null : RouteNames.login,
-          loadingEmail: (_) => null,
-          loadingGoogle: (_) => null,
         );
       },
 

@@ -100,7 +100,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
         result.fold(
           (failure) => emit(AuthState.failure(message: failure.message)),
-          (user) => emit(AuthState.authenticated(user: user)),
+          (_) => emit(const AuthState.registerSuccess()),
         );
       },
       logout: (_) async {

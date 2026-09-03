@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
 import '../widgets/auth_text_field.dart';
@@ -31,6 +32,7 @@ class LoginFormSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final cardColor = isDark ? AppColors.darkSurface : AppColors.lightSurface;
 
     return Container(
@@ -53,42 +55,42 @@ class LoginFormSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ?? Credentials section ???????????????????????????????????
-              LoginSectionLabel(isDark: isDark, label: 'Credentials'),
+              // ── Credentials section ─────────────────────────────────
+              LoginSectionLabel(isDark: isDark, label: l10n.credentials),
               const SizedBox(height: 14),
 
-              // ?? Email ?????????????????????????????????????????????????
+              // ── Email ───────────────────────────────────────────────
               AuthTextField(
-                label: 'Email',
+                label: l10n.email,
                 hint: 'you@example.com',
                 controller: emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 prefixIcon: Icons.email_outlined,
                 validator: (v) {
-                  if (v == null || v.isEmpty) return 'Enter your email';
-                  if (!v.contains('@')) return 'Invalid email';
+                  if (v == null || v.isEmpty) return l10n.enterYourEmail;
+                  if (!v.contains('@')) return l10n.invalidEmail;
                   return null;
                 },
               ),
               const SizedBox(height: 12),
 
-              // ?? Password ??????????????????????????????????????????????
+              // ── Password ────────────────────────────────────────────
               AuthTextField(
-                label: 'Password',
-                hint: '��������',
+                label: l10n.password,
+                hint: '••••••••',
                 controller: passCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
                 validator: (v) {
-                  if (v == null || v.isEmpty) return 'Enter your password';
-                  if (v.length < 6) return 'Min 6 characters';
+                  if (v == null || v.isEmpty) return l10n.enterYourPassword;
+                  if (v.length < 6) return l10n.minSixChars;
                   return null;
                 },
               ),
 
-              // ?? Forgot password ???????????????????????????????????????
+              // ── Forgot password ─────────────────────────────────────
               Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -99,9 +101,9 @@ class LoginFormSection extends StatelessWidget {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: const Text(
-                    'Forgot password?',
-                    style: TextStyle(
+                  child: Text(
+                    l10n.forgotPassword,
+                    style: const TextStyle(
                       color: AppColors.primary,
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -129,7 +131,7 @@ class LoginFormSection extends StatelessWidget {
                     orElse: () => false,
                   );
                   return PrimaryAuthButton(
-                    label: 'Sign In',
+                    label: l10n.signIn,
                     isLoading: isEmailLoading,
                     onPressed: (isEmailLoading || isGoogleLoading)
                         ? null
@@ -139,8 +141,7 @@ class LoginFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 22),
 
-              // ?? Social login section ??????????????????????????????????
-              LoginSectionLabel(isDark: isDark, label: 'Or continue with'),
+              LoginSectionLabel(isDark: isDark, label: l10n.orContinueWith),
               const SizedBox(height: 14),
 
               // Google button
@@ -171,12 +172,11 @@ class LoginFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 28),
 
-              // ?? Register link ?????????????????????????????????????????
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account? ",
+                    '${l10n.dontHaveAccount} ',
                     style: TextStyle(
                       color: isDark
                           ? AppColors.darkOnSurfaceVariant
@@ -186,9 +186,9 @@ class LoginFormSection extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () => context.push(RouteNames.register),
-                    child: const Text(
-                      'Register',
-                      style: TextStyle(
+                    child: Text(
+                      l10n.register,
+                      style: const TextStyle(
                         color: AppColors.primary,
                         fontWeight: FontWeight.w600,
                         fontSize: 14,

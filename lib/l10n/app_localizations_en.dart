@@ -154,4 +154,97 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emptyStateNotifications => 'You have no notifications.';
+
+  @override
+  String get welcomeBack => 'Welcome Back';
+
+  @override
+  String get fastServiceFairPrices => 'Fast Service .. Fair Prices';
+
+  @override
+  String get signInToAccount => 'Sign in to your Fixora account';
+
+  @override
+  String get credentials => 'Credentials';
+
+  @override
+  String get signIn => 'Sign In';
+
+  @override
+  String get orContinueWith => 'Or continue with';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get joinPlatform => 'Join the Field Service platform';
+
+  @override
+  String get iAmRegisteringAs => 'I am registering as';
+
+  @override
+  String get accountDetails => 'Account details';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get fullNameHint => 'John Doe';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get roleClient => 'Client';
+
+  @override
+  String get roleClientSubtitle => 'Request services';
+
+  @override
+  String get roleTechnician => 'Technician';
+
+  @override
+  String get roleTechnicianSubtitle => 'Provide services';
+
+  @override
+  String get switchToArabic => 'العربية';
+
+  @override
+  String get switchToEnglish => 'English';
+
+  @override
+  String get enterYourEmail => 'Enter your email';
+
+  @override
+  String get invalidEmail => 'Invalid email';
+
+  @override
+  String get enterYourPassword => 'Enter your password';
+
+  @override
+  String get minSixChars => 'Min 6 characters';
+
+  @override
+  String get enterYourName => 'Enter your name';
+
+  @override
+  String get nameTooShort => 'Name too short';
+
+  @override
+  String get enterAPassword => 'Enter a password';
+
+  @override
+  String get confirmYourPassword => 'Confirm your password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
 }

@@ -25,6 +25,9 @@ sealed class AuthState with _$AuthState {
   /// User is not authenticated.
   const factory AuthState.unauthenticated() = _Unauthenticated;
 
+  /// Registration completed successfully — user should go to login.
+  const factory AuthState.registerSuccess() = _RegisterSuccess;
+
   /// An auth operation failed.
   const factory AuthState.failure({required String message}) = _Failure;
 }

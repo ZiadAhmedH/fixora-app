@@ -43,7 +43,6 @@ class _AppView extends StatefulWidget {
 }
 
 class _AppViewState extends State<_AppView> {
-  // Router (and AuthBloc inside it) is created once.
   final _router = AppRouter.createRouter();
 
   @override

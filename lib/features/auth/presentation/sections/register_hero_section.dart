@@ -5,10 +5,11 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/blocs/locale/locale_bloc.dart';
 
-class LoginHeroSection extends StatelessWidget {
+/// Section 1 — Gradient hero panel for the register screen.
+class RegisterHeroSection extends StatelessWidget {
   final Size size;
 
-  const LoginHeroSection({super.key, required this.size});
+  const RegisterHeroSection({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class LoginHeroSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: size.height * 0.32,
+      height: size.height * 0.28,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF00BFA6), Color(0xFF00897B)],
@@ -43,11 +44,11 @@ class LoginHeroSection extends StatelessWidget {
 
               // ── Logo ─────────────────────────────────────────────
               Container(
-                width: 64,
-                height: 64,
+                width: 58,
+                height: 58,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.15),
@@ -57,17 +58,15 @@ class LoginHeroSection extends StatelessWidget {
                   ],
                 ),
                 padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: Image.asset(AppAssets.logo, fit: BoxFit.cover),
-                ),
+                child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
 
               // ── Title ────────────────────────────────────────────────
               Text(
-                l10n.welcomeBack,
+                l10n.createAccount,
                 style: const TextStyle(
-                  fontSize: 26,
+                  fontSize: 24,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                   height: 1.2,
@@ -76,24 +75,12 @@ class LoginHeroSection extends StatelessWidget {
               ),
               const SizedBox(height: 4),
 
-              // ── Tagline ──────────────────────────────────────────────
-              Text(
-                l10n.fastServiceFairPrices,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                  letterSpacing: 0.2,
-                ),
-              ),
-              const SizedBox(height: 3),
-
               // ── Subtitle ─────────────────────────────────────────────
               Text(
-                l10n.signInToAccount,
+                l10n.joinPlatform,
                 style: TextStyle(
                   fontSize: 13,
-                  color: Colors.white.withValues(alpha: 0.80),
+                  color: Colors.white.withValues(alpha: 0.82),
                   fontWeight: FontWeight.w400,
                 ),
               ),

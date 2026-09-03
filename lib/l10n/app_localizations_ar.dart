@@ -152,4 +152,97 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get emptyStateNotifications => 'ليس لديك إشعارات.';
+
+  @override
+  String get welcomeBack => 'أهلاً بعودتك';
+
+  @override
+  String get fastServiceFairPrices => 'خدمة سريعة .. أسعار عادلة';
+
+  @override
+  String get signInToAccount => 'سجّل دخولك إلى حساب Fixora';
+
+  @override
+  String get credentials => 'بيانات الدخول';
+
+  @override
+  String get signIn => 'تسجيل الدخول';
+
+  @override
+  String get orContinueWith => 'أو تابع بواسطة';
+
+  @override
+  String get continueWithGoogle => 'المتابعة بواسطة Google';
+
+  @override
+  String get dontHaveAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get createAccount => 'إنشاء حساب';
+
+  @override
+  String get joinPlatform => 'انضم إلى منصة الخدمة الميدانية';
+
+  @override
+  String get iAmRegisteringAs => 'أسجّل بوصفي';
+
+  @override
+  String get accountDetails => 'تفاصيل الحساب';
+
+  @override
+  String get fullName => 'الاسم الكامل';
+
+  @override
+  String get fullNameHint => 'محمد علي';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get alreadyHaveAccount => 'لديك حساب بالفعل؟';
+
+  @override
+  String get roleClient => 'عميل';
+
+  @override
+  String get roleClientSubtitle => 'طلب خدمات';
+
+  @override
+  String get roleTechnician => 'فني';
+
+  @override
+  String get roleTechnicianSubtitle => 'تقديم خدمات';
+
+  @override
+  String get switchToArabic => 'العربية';
+
+  @override
+  String get switchToEnglish => 'English';
+
+  @override
+  String get enterYourEmail => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get invalidEmail => 'بريد إلكتروني غير صحيح';
+
+  @override
+  String get enterYourPassword => 'أدخل كلمة مرورك';
+
+  @override
+  String get minSixChars => 'دون 6 أحرف على الأقل';
+
+  @override
+  String get enterYourName => 'أدخل اسمك';
+
+  @override
+  String get nameTooShort => 'الاسم قصير جداً';
+
+  @override
+  String get enterAPassword => 'أدخل كلمة مرور';
+
+  @override
+  String get confirmYourPassword => 'أكد كلمة المرور';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
 }

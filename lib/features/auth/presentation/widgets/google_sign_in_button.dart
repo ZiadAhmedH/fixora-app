@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/app_colors.dart';
+import '../../../../../l10n/app_localizations.dart';
 
 class GoogleSignInButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -15,6 +16,7 @@ class GoogleSignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
 
     return SizedBox(
       width: double.infinity,
@@ -43,7 +45,7 @@ class GoogleSignInButton extends StatelessWidget {
                   _GoogleLogo(),
                   const SizedBox(width: 10),
                   Text(
-                    'Continue with Google',
+                    l10n.continueWithGoogle,
                     style: TextStyle(
                       color: isDark
                           ? AppColors.darkOnSurface

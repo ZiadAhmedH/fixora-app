@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="assets/images/fixora.png" alt="Fixora Logo" width="100" height="100" style="border-radius: 20px;" />
+<img width="160" height="168" alt="screen" src="https://github.com/user-attachments/assets/b1a6c54f-6662-40de-9032-57115479b56f" />
+
 
 # Fixora — Field Service App
 

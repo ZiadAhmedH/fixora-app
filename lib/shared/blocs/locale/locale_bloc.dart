@@ -10,10 +10,8 @@ part 'locale_bloc.freezed.dart';
 
 @freezed
 sealed class LocaleEvent with _$LocaleEvent {
-  /// Load persisted locale on app startup.
   const factory LocaleEvent.load() = _Load;
 
-  /// Change the app locale.
   const factory LocaleEvent.change({required String languageCode}) = _Change;
 }
 
@@ -21,9 +19,8 @@ sealed class LocaleEvent with _$LocaleEvent {
 
 @freezed
 class LocaleState with _$LocaleState {
-  const factory LocaleState({
-    @Default(Locale('en')) Locale locale,
-  }) = _LocaleState;
+  const factory LocaleState({@Default(Locale('en')) Locale locale}) =
+      _LocaleState;
 }
 
 // ── BLoC ──────────────────────────────────────────────────────────────────────
@@ -46,10 +43,7 @@ class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
     emit(LocaleState(locale: locale));
   }
 
-  Future<void> _onChange(
-    Emitter<LocaleState> emit,
-    String languageCode,
-  ) async {
+  Future<void> _onChange(Emitter<LocaleState> emit, String languageCode) async {
     await _prefs.setString(AppConstants.localeKey, languageCode);
     emit(LocaleState(locale: Locale(languageCode)));
   }

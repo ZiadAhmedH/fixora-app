@@ -144,5 +144,101 @@
   "@emptyStateSearch": { "description": "Search empty state message" },
 
   "emptyStateNotifications": "You have no notifications.",
-  "@emptyStateNotifications": { "description": "Notifications empty state" }
+  "@emptyStateNotifications": { "description": "Notifications empty state" },
+
+  "welcomeBack": "Welcome Back",
+  "@welcomeBack": { "description": "Login hero title" },
+
+  "fastServiceFairPrices": "Fast Service .. Fair Prices",
+  "@fastServiceFairPrices": { "description": "Login hero tagline" },
+
+  "signInToAccount": "Sign in to your Fixora account",
+  "@signInToAccount": { "description": "Login hero subtitle" },
+
+  "credentials": "Credentials",
+  "@credentials": { "description": "Login form section label" },
+
+  "signIn": "Sign In",
+  "@signIn": { "description": "Sign in button label" },
+
+  "orContinueWith": "Or continue with",
+  "@orContinueWith": { "description": "Divider text before social login" },
+
+  "continueWithGoogle": "Continue with Google",
+  "@continueWithGoogle": { "description": "Google sign-in button text" },
+
+  "dontHaveAccount": "Don't have an account?",
+  "@dontHaveAccount": { "description": "Prompt to navigate to register" },
+
+  "createAccount": "Create Account",
+  "@createAccount": { "description": "Register button label" },
+
+  "joinPlatform": "Join the Field Service platform",
+  "@joinPlatform": { "description": "Register hero subtitle" },
+
+  "iAmRegisteringAs": "I am registering as",
+  "@iAmRegisteringAs": { "description": "Role section label" },
+
+  "accountDetails": "Account details",
+  "@accountDetails": { "description": "Account details section label" },
+
+  "fullName": "Full Name",
+  "@fullName": { "description": "Full name field label" },
+
+  "fullNameHint": "John Doe",
+  "@fullNameHint": { "description": "Full name field hint" },
+
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": { "description": "Confirm password field label" },
+
+  "alreadyHaveAccount": "Already have an account?",
+  "@alreadyHaveAccount": { "description": "Prompt to navigate to login" },
+
+  "roleClient": "Client",
+  "@roleClient": { "description": "Client role label" },
+
+  "roleClientSubtitle": "Request services",
+  "@roleClientSubtitle": { "description": "Client role subtitle" },
+
+  "roleTechnician": "Technician",
+  "@roleTechnician": { "description": "Technician role label" },
+
+  "roleTechnicianSubtitle": "Provide services",
+  "@roleTechnicianSubtitle": { "description": "Technician role subtitle" },
+
+  "switchToArabic": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+  "@switchToArabic": { "description": "Button to switch to Arabic" },
+
+  "switchToEnglish": "English",
+  "@switchToEnglish": { "description": "Button to switch to English" },
+
+  "enterYourEmail": "Enter your email",
+  "@enterYourEmail": { "description": "Email validation empty error" },
+
+  "invalidEmail": "Invalid email",
+  "@invalidEmail": { "description": "Email format validation error" },
+
+  "enterYourPassword": "Enter your password",
+  "@enterYourPassword": { "description": "Password validation empty error" },
+
+  "minSixChars": "Min 6 characters",
+  "@minSixChars": { "description": "Password minimum length error" },
+
+  "enterYourName": "Enter your name",
+  "@enterYourName": { "description": "Name validation empty error" },
+
+  "nameTooShort": "Name too short",
+  "@nameTooShort": { "description": "Name minimum length error" },
+
+  "enterAPassword": "Enter a password",
+  "@enterAPassword": { "description": "Register password validation empty error" },
+
+  "confirmYourPassword": "Confirm your password",
+  "@confirmYourPassword": { "description": "Confirm password validation empty error" },
+
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" },
+
+  "fieldServiceManagement": "Field Service Management",
+  "@fieldServiceManagement": { "description": "Splash screen app tagline" }
 }

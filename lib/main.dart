@@ -13,10 +13,7 @@ import 'shared/blocs/theme/theme_bloc.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ── Firebase ──────────────────────────────────────────────
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await initDependencies();
 
@@ -28,22 +25,25 @@ class FieldServiceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ThemeBloc>(
-          create: (_) => ThemeBloc(sl())..add(const ThemeEvent.load()),
-        ),
-        BlocProvider<LocaleBloc>(
-          create: (_) => LocaleBloc(sl())..add(const LocaleEvent.load()),
-        ),
-      ],
-      child: const _AppView(),
+    return BlocProvider<ThemeBloc>(
+      create: (_) => sl<ThemeBloc>()..add(const ThemeEvent.load()),
+      child: BlocProvider<LocaleBloc>(
+        create: (_) => sl<LocaleBloc>()..add(const LocaleEvent.load()),
+        child: const _AppView(),
+      ),
     );
   }
 }
 
-class _AppView extends StatelessWidget {
+class _AppView extends StatefulWidget {
   const _AppView();
+
+  @override
+  State<_AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<_AppView> {
+  final _router = AppRouter.createRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +51,12 @@ class _AppView extends StatelessWidget {
     final locale = context.select((LocaleBloc bloc) => bloc.state.locale);
 
     return MaterialApp.router(
-      // ── Identity ────────────────────────────────────────────
-      title: 'Field Service App',
+      title: 'Fixora',
       debugShowCheckedModeBanner: false,
-
-      // ── Routing ─────────────────────────────────────────────
-      routerConfig: AppRouter.router,
-
-      // ── Theming ─────────────────────────────────────────────
+      routerConfig: _router,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,
-
-      // ── Localization ────────────────────────────────────────
       locale: locale,
       supportedLocales: appSupportedLocales,
       localizationsDelegates: appLocalizationDelegates,

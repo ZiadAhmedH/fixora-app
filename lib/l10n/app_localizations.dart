@@ -385,6 +385,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You have no notifications.'**
   String get emptyStateNotifications;
+
+  /// Login hero title
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back'**
+  String get welcomeBack;
+
+  /// Login hero tagline
+  ///
+  /// In en, this message translates to:
+  /// **'Fast Service .. Fair Prices'**
+  String get fastServiceFairPrices;
+
+  /// Login hero subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to your Fixora account'**
+  String get signInToAccount;
+
+  /// Login form section label
+  ///
+  /// In en, this message translates to:
+  /// **'Credentials'**
+  String get credentials;
+
+  /// Sign in button label
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// Divider text before social login
+  ///
+  /// In en, this message translates to:
+  /// **'Or continue with'**
+  String get orContinueWith;
+
+  /// Google sign-in button text
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// Prompt to navigate to register
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAccount;
+
+  /// Register button label
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccount;
+
+  /// Register hero subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Join the Field Service platform'**
+  String get joinPlatform;
+
+  /// Role section label
+  ///
+  /// In en, this message translates to:
+  /// **'I am registering as'**
+  String get iAmRegisteringAs;
+
+  /// Account details section label
+  ///
+  /// In en, this message translates to:
+  /// **'Account details'**
+  String get accountDetails;
+
+  /// Full name field label
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullName;
+
+  /// Full name field hint
+  ///
+  /// In en, this message translates to:
+  /// **'John Doe'**
+  String get fullNameHint;
+
+  /// Confirm password field label
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// Prompt to navigate to login
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// Client role label
+  ///
+  /// In en, this message translates to:
+  /// **'Client'**
+  String get roleClient;
+
+  /// Client role subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Request services'**
+  String get roleClientSubtitle;
+
+  /// Technician role label
+  ///
+  /// In en, this message translates to:
+  /// **'Technician'**
+  String get roleTechnician;
+
+  /// Technician role subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Provide services'**
+  String get roleTechnicianSubtitle;
+
+  /// Button to switch to Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'العربية'**
+  String get switchToArabic;
+
+  /// Button to switch to English
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get switchToEnglish;
+
+  /// Email validation empty error
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterYourEmail;
+
+  /// Email format validation error
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email'**
+  String get invalidEmail;
+
+  /// Password validation empty error
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get enterYourPassword;
+
+  /// Password minimum length error
+  ///
+  /// In en, this message translates to:
+  /// **'Min 6 characters'**
+  String get minSixChars;
+
+  /// Name validation empty error
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enterYourName;
+
+  /// Name minimum length error
+  ///
+  /// In en, this message translates to:
+  /// **'Name too short'**
+  String get nameTooShort;
+
+  /// Register password validation empty error
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a password'**
+  String get enterAPassword;
+
+  /// Confirm password validation empty error
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get confirmYourPassword;
+
+  /// Passwords mismatch error
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
+
+  /// Splash screen app tagline
+  ///
+  /// In en, this message translates to:
+  /// **'Field Service Management'**
+  String get fieldServiceManagement;
 }
 
 class _AppLocalizationsDelegate

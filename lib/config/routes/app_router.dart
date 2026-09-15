@@ -7,6 +7,8 @@ import '../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../features/auth/presentation/bloc/auth_event.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/splash/presentation/bloc/splash_bloc.dart';
+import '../../features/splash/presentation/pages/splash_page.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -15,7 +17,7 @@ abstract final class AppRouter {
     final notifier = _AuthChangeNotifier(authBloc);
 
     return GoRouter(
-      initialLocation: RouteNames.home,
+      initialLocation: RouteNames.splash,
       debugLogDiagnostics: true,
       refreshListenable: notifier,
 
@@ -23,9 +25,13 @@ abstract final class AppRouter {
         final isOnAuthRoute =
             state.matchedLocation == RouteNames.login ||
             state.matchedLocation == RouteNames.register;
+        final isOnSplash = state.matchedLocation == RouteNames.splash;
+
+        // Let splash handle its own routing; don't intercept it.
+        if (isOnSplash) return null;
 
         return authBloc.state.map(
-          initial: (_) => null, // Wait for checkAuthStatus to resolve
+          initial: (_) => RouteNames.splash,
           loading: (_) => null,
           loadingEmail: (_) => null,
           loadingGoogle: (_) => null,
@@ -42,6 +48,16 @@ abstract final class AppRouter {
           builder: (context, state, child) =>
               BlocProvider<AuthBloc>.value(value: authBloc, child: child),
           routes: [
+            // ── Splash route ─────────────────────────────────────────
+            GoRoute(
+              path: RouteNames.splash,
+              name: 'splash',
+              builder: (context, state) => BlocProvider(
+                create: (_) => sl<SplashBloc>(),
+                child: const SplashPage(),
+              ),
+            ),
+
             // ── Auth routes ───────────────────────────────────────────────
             GoRoute(
               path: RouteNames.login,

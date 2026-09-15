@@ -237,5 +237,8 @@
   "@confirmYourPassword": { "description": "Confirm password validation empty error" },
 
   "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
-  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" }
+  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" },
+
+  "fieldServiceManagement": "إدارة الخدمة الميدانية",
+  "@fieldServiceManagement": { "description": "Splash screen app tagline" }
 }

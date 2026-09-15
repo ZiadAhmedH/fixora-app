@@ -17,6 +17,8 @@ import '../../features/auth/domain/usecases/logout_use_case.dart';
 import '../../features/auth/domain/usecases/register_use_case.dart';
 import '../../features/auth/domain/usecases/watch_auth_state_use_case.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/splash/domain/usecases/check_auth_status_use_case.dart';
+import '../../features/splash/presentation/bloc/splash_bloc.dart';
 import '../../shared/blocs/locale/locale_bloc.dart';
 import '../../shared/blocs/theme/theme_bloc.dart';
 
@@ -84,6 +86,12 @@ Future<void> initDependencies() async {
       getCurrentUser: sl(),
       watchAuthState: sl(),
     ),
+  );
+
+  // ── Splash ────────────────────────────────────────────────
+  sl.registerLazySingleton(() => CheckAuthStatusUseCase(sl()));
+  sl.registerFactory(
+    () => SplashBloc(checkAuthStatus: sl()),
   );
 
   // ── Shared Blocs ──────────────────────────────────────────

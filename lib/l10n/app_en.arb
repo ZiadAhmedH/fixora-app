@@ -237,5 +237,8 @@
   "@confirmYourPassword": { "description": "Confirm password validation empty error" },
 
   "passwordsDoNotMatch": "Passwords do not match",
-  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" }
+  "@passwordsDoNotMatch": { "description": "Passwords mismatch error" },
+
+  "fieldServiceManagement": "Field Service Management",
+  "@fieldServiceManagement": { "description": "Splash screen app tagline" }
 }

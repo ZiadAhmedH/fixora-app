@@ -37,9 +37,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
     required GoogleSignIn googleSignIn,
-  })  : _firebaseAuth = firebaseAuth,
-        _firestore = firestore,
-        _googleSignIn = googleSignIn;
+  }) : _firebaseAuth = firebaseAuth,
+       _firestore = firestore,
+       _googleSignIn = googleSignIn;
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -130,8 +130,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         idToken: googleAuth.idToken,
       );
 
-      final userCredential =
-          await _firebaseAuth.signInWithCredential(credential);
+      final userCredential = await _firebaseAuth.signInWithCredential(
+        credential,
+      );
       final firebaseUser = userCredential.user!;
 
       // Check if user profile already exists in Firestore
@@ -151,6 +152,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           role: roleStr,
           createdAt: DateTime.now(),
         );
+        // save user to firestore:
         await _usersCol.doc(firebaseUser.uid).set(model.toFirestore());
         return model;
       }
@@ -160,17 +162,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     }
   }
 
-  // ── Logout ────────────────────────────────────────────────────────────────
-
   @override
   Future<void> logout() async {
-    await Future.wait([
-      _firebaseAuth.signOut(),
-      _googleSignIn.signOut(),
-    ]);
+    await Future.wait([_firebaseAuth.signOut(), _googleSignIn.signOut()]);
   }
-
-  // ── Get current user ──────────────────────────────────────────────────────
 
   @override
   Future<UserModel?> getCurrentUser() async {
@@ -182,8 +177,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       return null;
     }
   }
-
-  // ── Watch auth state ──────────────────────────────────────────────────────
 
   @override
   Stream<UserModel?> watchAuthState() {

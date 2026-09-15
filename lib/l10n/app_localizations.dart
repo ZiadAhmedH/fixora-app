@@ -571,6 +571,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwordsDoNotMatch;
+
+  /// Splash screen app tagline
+  ///
+  /// In en, this message translates to:
+  /// **'Field Service Management'**
+  String get fieldServiceManagement;
 }
 
 class _AppLocalizationsDelegate

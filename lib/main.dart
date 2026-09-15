@@ -51,7 +51,7 @@ class _AppViewState extends State<_AppView> {
     final locale = context.select((LocaleBloc bloc) => bloc.state.locale);
 
     return MaterialApp.router(
-      title: 'Field Service App',
+      title: 'Fixora',
       debugShowCheckedModeBanner: false,
       routerConfig: _router,
       theme: AppTheme.lightTheme,

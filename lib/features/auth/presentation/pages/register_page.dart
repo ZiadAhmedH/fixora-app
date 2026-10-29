@@ -79,8 +79,9 @@ class _RegisterPageState extends State<RegisterPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor:
-          isDark ? AppColors.darkBackground : AppColors.lightBackground,
+      backgroundColor: isDark
+          ? AppColors.darkBackground
+          : AppColors.lightBackground,
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           state.maybeMap(

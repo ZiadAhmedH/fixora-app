@@ -67,10 +67,7 @@ class RegisterFormSection extends StatelessWidget {
               // ── Role section ──────────────────────────────────────────
               LoginSectionLabel(isDark: isDark, label: l10n.iAmRegisteringAs),
               const SizedBox(height: 12),
-              _RoleSelector(
-                selected: selectedRole,
-                onChanged: onRoleChanged,
-              ),
+              _RoleSelector(selected: selectedRole, onChanged: onRoleChanged),
               const SizedBox(height: 22),
 
               // ── Details section ───────────────────────────────────────
@@ -311,9 +308,7 @@ class _RoleCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? AppColors.primary
-                      : (isDark
-                          ? AppColors.darkBackground
-                          : AppColors.grey100),
+                      : (isDark ? AppColors.darkBackground : AppColors.grey100),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -333,8 +328,8 @@ class _RoleCard extends StatelessWidget {
                   color: isSelected
                       ? AppColors.primary
                       : (isDark
-                          ? AppColors.darkOnSurface
-                          : AppColors.lightOnSurface),
+                            ? AppColors.darkOnSurface
+                            : AppColors.lightOnSurface),
                 ),
               ),
               const SizedBox(height: 2),

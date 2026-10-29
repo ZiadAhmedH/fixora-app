@@ -1,5 +1,3 @@
-/// Named route constants.
-/// Use these instead of hard-coding route strings.
 abstract final class RouteNames {
   static const String splash = '/splash';
   static const String onboarding = '/onboarding';

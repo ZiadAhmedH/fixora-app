@@ -38,7 +38,6 @@ class _SplashPageState extends State<SplashPage>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward().then((_) {
-      // Trigger auth check after animation completes
       if (mounted) {
         context.read<SplashBloc>().add(const SplashEvent.started());
       }
@@ -74,7 +73,6 @@ class _SplashPageState extends State<SplashPage>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // App icon / logo
                   Image.asset(AppAssets.logo, width: 100, height: 100),
                   const SizedBox(height: 24),
                   Text(

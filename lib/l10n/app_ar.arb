@@ -240,5 +240,62 @@
   "@passwordsDoNotMatch": { "description": "Passwords mismatch error" },
 
   "fieldServiceManagement": "إدارة الخدمة الميدانية",
-  "@fieldServiceManagement": { "description": "Splash screen app tagline" }
+  "@fieldServiceManagement": { "description": "Splash screen app tagline" },
+
+  "forgotPasswordTitle": "نسيت كلمة المرور",
+  "@forgotPasswordTitle": { "description": "Forgot password page hero title" },
+
+  "forgotPasswordSubtitle": "إعادة تعيين الوصول إلى حساب فيكسورا الخاص بك",
+  "@forgotPasswordSubtitle": { "description": "Forgot password hero subtitle line 1" },
+
+  "forgotPasswordBody": "سنرسل لك تعليمات التحقق",
+  "@forgotPasswordBody": { "description": "Forgot password hero subtitle line 2" },
+
+  "sendResetCodeVia": "إرسال رمز التعيين عبر",
+  "@sendResetCodeVia": { "description": "Section label for reset method selector" },
+
+  "accountCredentials": "بيانات الحساب",
+  "@accountCredentials": { "description": "Section label for email input" },
+
+  "emailAddress": "البريد الإلكتروني",
+  "@emailAddress": { "description": "Email method card label" },
+
+  "instantMagicLink": "رابط فوري",
+  "@instantMagicLink": { "description": "Email method card subtitle" },
+
+  "phoneSms": "رسالة نصية SMS",
+  "@phoneSms": { "description": "Phone SMS method card label" },
+
+  "sixDigitOtp": "رمز مكوّن من 6 أرقام",
+  "@sixDigitOtp": { "description": "Phone SMS method card subtitle" },
+
+  "registeredEmailHint": "أدخل البريد الإلكتروني المسجل",
+  "@registeredEmailHint": { "description": "Email field hint on forgot password page" },
+
+  "registeredEmailNote": "تأكد من أن هذا هو البريد الإلكتروني لحسابك كعميل أو ميكانيكي في فيكسورا.",
+  "@registeredEmailNote": { "description": "Helper note below the email field" },
+
+  "sendResetInstructions": "إرسال تعليمات التعيين",
+  "@sendResetInstructions": { "description": "CTA button on forgot password page" },
+
+  "havingTrouble": "تواجه مشكلة؟",
+  "@havingTrouble": { "description": "Section label above support tile" },
+
+  "contactSupport": "التواصل مع فريق الدعم",
+  "@contactSupport": { "description": "Support tile title" },
+
+  "supportAvailability": "متاح على مدار الساعة للمساعدة في الحساب",
+  "@supportAvailability": { "description": "Support tile subtitle" },
+
+  "rememberPassword": "تذكرت كلمة المرور؟",
+  "@rememberPassword": { "description": "Link back to login" },
+
+  "resetEmailSentTitle": "تحقق من بريدك الإلكتروني",
+  "@resetEmailSentTitle": { "description": "Success dialog title" },
+
+  "resetEmailSentBody": "لقد أرسلنا تعليمات إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد.",
+  "@resetEmailSentBody": { "description": "Success dialog body" },
+
+  "gotIt": "فهمت",
+  "@gotIt": { "description": "Success dialog confirm button" }
 }

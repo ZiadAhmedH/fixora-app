@@ -92,7 +92,7 @@ class LoginFormSection extends StatelessWidget {
               Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => context.push(RouteNames.forgotPassword),
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 4,

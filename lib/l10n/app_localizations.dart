@@ -577,6 +577,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Field Service Management'**
   String get fieldServiceManagement;
+
+  /// Forgot password page hero title
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgotPasswordTitle;
+
+  /// Forgot password hero subtitle line 1
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your Fixora account access'**
+  String get forgotPasswordSubtitle;
+
+  /// Forgot password hero subtitle line 2
+  ///
+  /// In en, this message translates to:
+  /// **'We will send verification instructions'**
+  String get forgotPasswordBody;
+
+  /// Section label for reset method selector
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset code via'**
+  String get sendResetCodeVia;
+
+  /// Section label for email input
+  ///
+  /// In en, this message translates to:
+  /// **'Account Credentials'**
+  String get accountCredentials;
+
+  /// Email method card label
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get emailAddress;
+
+  /// Email method card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Instant magic link'**
+  String get instantMagicLink;
+
+  /// Phone SMS method card label
+  ///
+  /// In en, this message translates to:
+  /// **'Phone SMS'**
+  String get phoneSms;
+
+  /// Phone SMS method card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit OTP code'**
+  String get sixDigitOtp;
+
+  /// Email field hint on forgot password page
+  ///
+  /// In en, this message translates to:
+  /// **'Enter registered email address'**
+  String get registeredEmailHint;
+
+  /// Helper note below the email field
+  ///
+  /// In en, this message translates to:
+  /// **'Ensure this is the email associated with your Fixora client or technician account.'**
+  String get registeredEmailNote;
+
+  /// CTA button on forgot password page
+  ///
+  /// In en, this message translates to:
+  /// **'Send Reset Instructions'**
+  String get sendResetInstructions;
+
+  /// Section label above support tile
+  ///
+  /// In en, this message translates to:
+  /// **'Having trouble?'**
+  String get havingTrouble;
+
+  /// Support tile title
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support Team'**
+  String get contactSupport;
+
+  /// Support tile subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Available 24/7 for account assistance'**
+  String get supportAvailability;
+
+  /// Link back to login
+  ///
+  /// In en, this message translates to:
+  /// **'Remember your password?'**
+  String get rememberPassword;
+
+  /// Success dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email'**
+  String get resetEmailSentTitle;
+
+  /// Success dialog body
+  ///
+  /// In en, this message translates to:
+  /// **'We sent password reset instructions to your email address. Please check your inbox.'**
+  String get resetEmailSentBody;
+
+  /// Success dialog confirm button
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get gotIt;
 }
 
 class _AppLocalizationsDelegate

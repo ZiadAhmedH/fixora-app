@@ -248,4 +248,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fieldServiceManagement => 'إدارة الخدمة الميدانية';
+
+  @override
+  String get forgotPasswordTitle => 'نسيت كلمة المرور';
+
+  @override
+  String get forgotPasswordSubtitle =>
+      'إعادة تعيين الوصول إلى حساب فيكسورا الخاص بك';
+
+  @override
+  String get forgotPasswordBody => 'سنرسل لك تعليمات التحقق';
+
+  @override
+  String get sendResetCodeVia => 'إرسال رمز التعيين عبر';
+
+  @override
+  String get accountCredentials => 'بيانات الحساب';
+
+  @override
+  String get emailAddress => 'البريد الإلكتروني';
+
+  @override
+  String get instantMagicLink => 'رابط فوري';
+
+  @override
+  String get phoneSms => 'رسالة نصية SMS';
+
+  @override
+  String get sixDigitOtp => 'رمز مكوّن من 6 أرقام';
+
+  @override
+  String get registeredEmailHint => 'أدخل البريد الإلكتروني المسجل';
+
+  @override
+  String get registeredEmailNote =>
+      'تأكد من أن هذا هو البريد الإلكتروني لحسابك كعميل أو ميكانيكي في فيكسورا.';
+
+  @override
+  String get sendResetInstructions => 'إرسال تعليمات التعيين';
+
+  @override
+  String get havingTrouble => 'تواجه مشكلة؟';
+
+  @override
+  String get contactSupport => 'التواصل مع فريق الدعم';
+
+  @override
+  String get supportAvailability => 'متاح على مدار الساعة للمساعدة في الحساب';
+
+  @override
+  String get rememberPassword => 'تذكرت كلمة المرور؟';
+
+  @override
+  String get resetEmailSentTitle => 'تحقق من بريدك الإلكتروني';
+
+  @override
+  String get resetEmailSentBody =>
+      'لقد أرسلنا تعليمات إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد.';
+
+  @override
+  String get gotIt => 'فهمت';
 }

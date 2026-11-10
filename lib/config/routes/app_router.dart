@@ -5,6 +5,10 @@ import 'package:go_router/go_router.dart';
 import '../../config/di/injection_container.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../features/auth/presentation/bloc/auth_event.dart';
+import '../../features/auth/data/repositories/forgot_password_repository_impl.dart';
+import '../../features/auth/domain/usecases/send_reset_email_use_case.dart';
+import '../../features/auth/presentation/bloc/forgot_password_bloc.dart';
+import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/splash/presentation/bloc/splash_bloc.dart';
@@ -24,7 +28,8 @@ abstract final class AppRouter {
       redirect: (context, state) {
         final isOnAuthRoute =
             state.matchedLocation == RouteNames.login ||
-            state.matchedLocation == RouteNames.register;
+            state.matchedLocation == RouteNames.register ||
+            state.matchedLocation == RouteNames.forgotPassword;
         final isOnSplash = state.matchedLocation == RouteNames.splash;
 
         // Let splash handle its own routing; don't intercept it.
@@ -68,6 +73,18 @@ abstract final class AppRouter {
               path: RouteNames.register,
               name: 'register',
               builder: (context, state) => const RegisterPage(),
+            ),
+            GoRoute(
+              path: RouteNames.forgotPassword,
+              name: 'forgotPassword',
+              builder: (context, state) => BlocProvider(
+                create: (_) => ForgotPasswordBloc(
+                  SendResetEmailUseCase(
+                    ForgotPasswordRepositoryImpl(sl()),
+                  ),
+                ),
+                child: const ForgotPasswordPage(),
+              ),
             ),
 
             // ── App routes ────────────────────────────────────────────────

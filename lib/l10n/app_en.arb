@@ -240,5 +240,62 @@
   "@passwordsDoNotMatch": { "description": "Passwords mismatch error" },
 
   "fieldServiceManagement": "Field Service Management",
-  "@fieldServiceManagement": { "description": "Splash screen app tagline" }
+  "@fieldServiceManagement": { "description": "Splash screen app tagline" },
+
+  "forgotPasswordTitle": "Forgot Password",
+  "@forgotPasswordTitle": { "description": "Forgot password page hero title" },
+
+  "forgotPasswordSubtitle": "Reset your Fixora account access",
+  "@forgotPasswordSubtitle": { "description": "Forgot password hero subtitle line 1" },
+
+  "forgotPasswordBody": "We will send verification instructions",
+  "@forgotPasswordBody": { "description": "Forgot password hero subtitle line 2" },
+
+  "sendResetCodeVia": "Send reset code via",
+  "@sendResetCodeVia": { "description": "Section label for reset method selector" },
+
+  "accountCredentials": "Account Credentials",
+  "@accountCredentials": { "description": "Section label for email input" },
+
+  "emailAddress": "Email Address",
+  "@emailAddress": { "description": "Email method card label" },
+
+  "instantMagicLink": "Instant magic link",
+  "@instantMagicLink": { "description": "Email method card subtitle" },
+
+  "phoneSms": "Phone SMS",
+  "@phoneSms": { "description": "Phone SMS method card label" },
+
+  "sixDigitOtp": "6-digit OTP code",
+  "@sixDigitOtp": { "description": "Phone SMS method card subtitle" },
+
+  "registeredEmailHint": "Enter registered email address",
+  "@registeredEmailHint": { "description": "Email field hint on forgot password page" },
+
+  "registeredEmailNote": "Ensure this is the email associated with your Fixora client or technician account.",
+  "@registeredEmailNote": { "description": "Helper note below the email field" },
+
+  "sendResetInstructions": "Send Reset Instructions",
+  "@sendResetInstructions": { "description": "CTA button on forgot password page" },
+
+  "havingTrouble": "Having trouble?",
+  "@havingTrouble": { "description": "Section label above support tile" },
+
+  "contactSupport": "Contact Support Team",
+  "@contactSupport": { "description": "Support tile title" },
+
+  "supportAvailability": "Available 24/7 for account assistance",
+  "@supportAvailability": { "description": "Support tile subtitle" },
+
+  "rememberPassword": "Remember your password?",
+  "@rememberPassword": { "description": "Link back to login" },
+
+  "resetEmailSentTitle": "Check your email",
+  "@resetEmailSentTitle": { "description": "Success dialog title" },
+
+  "resetEmailSentBody": "We sent password reset instructions to your email address. Please check your inbox.",
+  "@resetEmailSentBody": { "description": "Success dialog body" },
+
+  "gotIt": "Got it",
+  "@gotIt": { "description": "Success dialog confirm button" }
 }

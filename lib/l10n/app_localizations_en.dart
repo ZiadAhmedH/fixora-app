@@ -250,4 +250,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fieldServiceManagement => 'Field Service Management';
+
+  @override
+  String get forgotPasswordTitle => 'Forgot Password';
+
+  @override
+  String get forgotPasswordSubtitle => 'Reset your Fixora account access';
+
+  @override
+  String get forgotPasswordBody => 'We will send verification instructions';
+
+  @override
+  String get sendResetCodeVia => 'Send reset code via';
+
+  @override
+  String get accountCredentials => 'Account Credentials';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get instantMagicLink => 'Instant magic link';
+
+  @override
+  String get phoneSms => 'Phone SMS';
+
+  @override
+  String get sixDigitOtp => '6-digit OTP code';
+
+  @override
+  String get registeredEmailHint => 'Enter registered email address';
+
+  @override
+  String get registeredEmailNote =>
+      'Ensure this is the email associated with your Fixora client or technician account.';
+
+  @override
+  String get sendResetInstructions => 'Send Reset Instructions';
+
+  @override
+  String get havingTrouble => 'Having trouble?';
+
+  @override
+  String get contactSupport => 'Contact Support Team';
+
+  @override
+  String get supportAvailability => 'Available 24/7 for account assistance';
+
+  @override
+  String get rememberPassword => 'Remember your password?';
+
+  @override
+  String get resetEmailSentTitle => 'Check your email';
+
+  @override
+  String get resetEmailSentBody =>
+      'We sent password reset instructions to your email address. Please check your inbox.';
+
+  @override
+  String get gotIt => 'Got it';
 }

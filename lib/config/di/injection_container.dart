@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/services/deep_link_service.dart';
+
 import '../../features/auth/data/datasources/auth_local_data_source.dart';
 import '../../features/auth/data/datasources/auth_remote_data_source.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
@@ -46,6 +48,9 @@ Future<void> initDependencies() async {
       aOptions: AndroidOptions(encryptedSharedPreferences: true),
     ),
   );
+
+  // Deep Link Service (powered by app_links)
+  sl.registerLazySingleton<DeepLinkService>(() => DeepLinkService());
 
   // ── Auth: Data Sources ────────────────────────────────────
   sl.registerLazySingleton<AuthRemoteDataSource>(

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/route_names.dart';
+import '../../../../core/services/deep_link_service.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/splash_bloc.dart';
 import '../bloc/splash_event.dart';
@@ -57,6 +58,14 @@ class _SplashPageState extends State<SplashPage>
 
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
+        // If app opened via a deep link (e.g. password reset), route to it!
+        if (DeepLinkService.pendingDeepLink != null) {
+          final target = DeepLinkService.pendingDeepLink!;
+          DeepLinkService.pendingDeepLink = null;
+          context.go(target);
+          return;
+        }
+
         state.map(
           initial: (_) {},
           authenticated: (_) => context.go(RouteNames.home),

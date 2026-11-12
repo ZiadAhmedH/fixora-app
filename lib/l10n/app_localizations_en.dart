@@ -309,4 +309,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gotIt => 'Got it';
+
+  @override
+  String get setNewPasswordTitle => 'Set New Password';
+
+  @override
+  String get setNewPasswordSubtitle =>
+      'Create a strong, unique password to secure your account';
+
+  @override
+  String get securityDetails => 'Security Details';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get passwordRequirements => 'PASSWORD REQUIREMENTS';
+
+  @override
+  String get reqMinLength => 'At least 8 characters long';
+
+  @override
+  String get reqMixedCase => 'Includes uppercase & lowercase letters';
+
+  @override
+  String get reqNumberOrSymbol =>
+      'Contains at least 1 number or special symbol';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get passwordRequirementsNotMet =>
+      'Password does not meet all requirements';
+
+  @override
+  String get passwordResetSuccess =>
+      'Password reset successfully! Please sign in.';
+
+  @override
+  String get linkExpiredTitle => 'Link Expired';
+
+  @override
+  String get requestNewLink => 'Request New Link';
 }

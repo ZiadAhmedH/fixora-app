@@ -6,13 +6,18 @@ import '../../config/di/injection_container.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../features/auth/presentation/bloc/auth_event.dart';
 import '../../features/auth/data/repositories/forgot_password_repository_impl.dart';
+import '../../features/auth/domain/usecases/confirm_password_reset_use_case.dart';
 import '../../features/auth/domain/usecases/send_reset_email_use_case.dart';
+import '../../features/auth/domain/usecases/verify_reset_code_use_case.dart';
 import '../../features/auth/presentation/bloc/forgot_password_bloc.dart';
+import '../../features/auth/presentation/bloc/set_password_bloc.dart';
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
+import '../../features/auth/presentation/pages/set_new_password_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/splash/presentation/bloc/splash_bloc.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
+import '../../core/services/deep_link_service.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -29,14 +34,24 @@ abstract final class AppRouter {
         final isOnAuthRoute =
             state.matchedLocation == RouteNames.login ||
             state.matchedLocation == RouteNames.register ||
-            state.matchedLocation == RouteNames.forgotPassword;
+            state.matchedLocation == RouteNames.forgotPassword ||
+            state.matchedLocation.startsWith('/__/auth/') ||
+            state.matchedLocation.startsWith('/reset') ||
+            state.matchedLocation.startsWith(RouteNames.setNewPassword);
         final isOnSplash = state.matchedLocation == RouteNames.splash;
+
+        // When a deep link targets password reset, let it load directly!
+        if (state.matchedLocation.startsWith(RouteNames.setNewPassword) ||
+            state.matchedLocation.startsWith('/__/auth/') ||
+            state.matchedLocation.startsWith('/reset')) {
+          return null;
+        }
 
         // Let splash handle its own routing; don't intercept it.
         if (isOnSplash) return null;
 
         return authBloc.state.map(
-          initial: (_) => RouteNames.splash,
+          initial: (_) => isOnAuthRoute ? null : RouteNames.splash,
           loading: (_) => null,
           loadingEmail: (_) => null,
           loadingGoogle: (_) => null,
@@ -85,6 +100,64 @@ abstract final class AppRouter {
                 ),
                 child: const ForgotPasswordPage(),
               ),
+            ),
+
+            // ── Firebase Auth Action / Links redirect ────────────────────
+            // Firebase sends reset links wrapped as:
+            // https://field-service-app-1145a.firebaseapp.com/__/auth/links?link=https://.../__/auth/action?...oobCode=XYZ...
+            GoRoute(
+              path: '/__/auth/links',
+              redirect: (context, state) {
+                final oobCode = DeepLinkService.extractOobCode(state.uri) ?? '';
+                if (oobCode.isNotEmpty) {
+                  return '${RouteNames.setNewPassword}?oobCode=$oobCode';
+                }
+                return null;
+              },
+            ),
+            GoRoute(
+              path: '/__/auth/action',
+              redirect: (context, state) {
+                final oobCode = DeepLinkService.extractOobCode(state.uri) ?? '';
+                if (oobCode.isNotEmpty) {
+                  return '${RouteNames.setNewPassword}?oobCode=$oobCode';
+                }
+                return null;
+              },
+            ),
+            GoRoute(
+              path: '/reset',
+              redirect: (context, state) {
+                final oobCode = DeepLinkService.extractOobCode(state.uri) ?? '';
+                if (oobCode.isNotEmpty) {
+                  return '${RouteNames.setNewPassword}?oobCode=$oobCode';
+                }
+                return null;
+              },
+            ),
+
+            // ── Set New Password Route ──────────────────────────────────────
+            GoRoute(
+              path: RouteNames.setNewPassword,
+              name: 'setNewPassword',
+              builder: (context, state) {
+                final extraMap = state.extra as Map<String, dynamic>?;
+                final oobCode = DeepLinkService.extractOobCode(state.uri) ??
+                    extraMap?['oobCode'] as String? ??
+                    '';
+
+                return BlocProvider(
+                  create: (_) => SetPasswordBloc(
+                    verifyResetCode: VerifyResetCodeUseCase(
+                      ForgotPasswordRepositoryImpl(sl()),
+                    ),
+                    confirmPasswordReset: ConfirmPasswordResetUseCase(
+                      ForgotPasswordRepositoryImpl(sl()),
+                    ),
+                  ),
+                  child: SetNewPasswordPage(oobCode: oobCode),
+                );
+              },
             ),
 
             // ── App routes ────────────────────────────────────────────────

@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ziadahmed.feild_service_app",
+      "sha256_cert_fingerprints": [
+        "8D:43:69:DE:F9:01:D8:16:23:CE:DF:60:BC:B8:6C:31:C4:2C:3F:99:A0:81:47:3B:80:E3:65:3B:B4:BF:3E:5D"
+      ]
+    }
+  }
+]
+

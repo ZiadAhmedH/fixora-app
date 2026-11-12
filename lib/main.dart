@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/di/injection_container.dart';
 import 'config/routes/app_router.dart';
 import 'core/localization/app_localizations_setup.dart';
+import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
 import 'shared/blocs/locale/locale_bloc.dart';
@@ -44,6 +45,18 @@ class _AppView extends StatefulWidget {
 
 class _AppViewState extends State<_AppView> {
   final _router = AppRouter.createRouter();
+
+  @override
+  void initState() {
+    super.initState();
+    sl<DeepLinkService>().init(_router);
+  }
+
+  @override
+  void dispose() {
+    sl<DeepLinkService>().dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

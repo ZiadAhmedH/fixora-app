@@ -297,5 +297,44 @@
   "@resetEmailSentBody": { "description": "Success dialog body" },
 
   "gotIt": "Got it",
-  "@gotIt": { "description": "Success dialog confirm button" }
+  "@gotIt": { "description": "Success dialog confirm button" },
+
+  "setNewPasswordTitle": "Set New Password",
+  "@setNewPasswordTitle": { "description": "Set new password page hero title" },
+
+  "setNewPasswordSubtitle": "Create a strong, unique password to secure your account",
+  "@setNewPasswordSubtitle": { "description": "Set new password hero subtitle" },
+
+  "securityDetails": "Security Details",
+  "@securityDetails": { "description": "Section label for the two password fields" },
+
+  "newPassword": "New Password",
+  "@newPassword": { "description": "New password field label" },
+
+  "passwordRequirements": "PASSWORD REQUIREMENTS",
+  "@passwordRequirements": { "description": "Requirements checklist header" },
+
+  "reqMinLength": "At least 8 characters long",
+  "@reqMinLength": { "description": "Password requirement: minimum length" },
+
+  "reqMixedCase": "Includes uppercase & lowercase letters",
+  "@reqMixedCase": { "description": "Password requirement: mixed case" },
+
+  "reqNumberOrSymbol": "Contains at least 1 number or special symbol",
+  "@reqNumberOrSymbol": { "description": "Password requirement: number or symbol" },
+
+  "resetPassword": "Reset Password",
+  "@resetPassword": { "description": "CTA button on set new password page" },
+
+  "passwordRequirementsNotMet": "Password does not meet all requirements",
+  "@passwordRequirementsNotMet": { "description": "Validator error when requirements not met" },
+
+  "passwordResetSuccess": "Password reset successfully! Please sign in.",
+  "@passwordResetSuccess": { "description": "Snackbar shown after successful password reset" },
+
+  "linkExpiredTitle": "Link Expired",
+  "@linkExpiredTitle": { "description": "Title shown when oobCode is expired or used" },
+
+  "requestNewLink": "Request New Link",
+  "@requestNewLink": { "description": "Button to go back and request a new reset email" }
 }

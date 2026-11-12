@@ -297,5 +297,44 @@
   "@resetEmailSentBody": { "description": "Success dialog body" },
 
   "gotIt": "فهمت",
-  "@gotIt": { "description": "Success dialog confirm button" }
+  "@gotIt": { "description": "Success dialog confirm button" },
+
+  "setNewPasswordTitle": "تعيين كلمة مرور جديدة",
+  "@setNewPasswordTitle": { "description": "Set new password page hero title" },
+
+  "setNewPasswordSubtitle": "أنشئ كلمة مرور قوية وفريدة لتأمين حسابك",
+  "@setNewPasswordSubtitle": { "description": "Set new password hero subtitle" },
+
+  "securityDetails": "تفاصيل الأمان",
+  "@securityDetails": { "description": "Section label for the two password fields" },
+
+  "newPassword": "كلمة المرور الجديدة",
+  "@newPassword": { "description": "New password field label" },
+
+  "passwordRequirements": "متطلبات كلمة المرور",
+  "@passwordRequirements": { "description": "Requirements checklist header" },
+
+  "reqMinLength": "8 أحرف على الأقل",
+  "@reqMinLength": { "description": "Password requirement: minimum length" },
+
+  "reqMixedCase": "تتضمن أحرفاً كبيرة وصغيرة",
+  "@reqMixedCase": { "description": "Password requirement: mixed case" },
+
+  "reqNumberOrSymbol": "تحتوي على رقم أو رمز خاص واحد على الأقل",
+  "@reqNumberOrSymbol": { "description": "Password requirement: number or symbol" },
+
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "@resetPassword": { "description": "CTA button on set new password page" },
+
+  "passwordRequirementsNotMet": "كلمة المرور لا تستوفي جميع المتطلبات",
+  "@passwordRequirementsNotMet": { "description": "Validator error when requirements not met" },
+
+  "passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح! يرجى تسجيل الدخول.",
+  "@passwordResetSuccess": { "description": "Snackbar shown after successful password reset" },
+
+  "linkExpiredTitle": "انتهت صلاحية الرابط",
+  "@linkExpiredTitle": { "description": "Title shown when oobCode is expired or used" },
+
+  "requestNewLink": "طلب رابط جديد",
+  "@requestNewLink": { "description": "Button to go back and request a new reset email" }
 }

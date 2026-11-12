@@ -308,4 +308,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gotIt => 'فهمت';
+
+  @override
+  String get setNewPasswordTitle => 'تعيين كلمة مرور جديدة';
+
+  @override
+  String get setNewPasswordSubtitle =>
+      'أنشئ كلمة مرور قوية وفريدة لتأمين حسابك';
+
+  @override
+  String get securityDetails => 'تفاصيل الأمان';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get passwordRequirements => 'متطلبات كلمة المرور';
+
+  @override
+  String get reqMinLength => '8 أحرف على الأقل';
+
+  @override
+  String get reqMixedCase => 'تتضمن أحرفاً كبيرة وصغيرة';
+
+  @override
+  String get reqNumberOrSymbol => 'تحتوي على رقم أو رمز خاص واحد على الأقل';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get passwordRequirementsNotMet =>
+      'كلمة المرور لا تستوفي جميع المتطلبات';
+
+  @override
+  String get passwordResetSuccess =>
+      'تم إعادة تعيين كلمة المرور بنجاح! يرجى تسجيل الدخول.';
+
+  @override
+  String get linkExpiredTitle => 'انتهت صلاحية الرابط';
+
+  @override
+  String get requestNewLink => 'طلب رابط جديد';
 }

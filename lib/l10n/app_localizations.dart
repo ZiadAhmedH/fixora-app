@@ -691,6 +691,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Got it'**
   String get gotIt;
+
+  /// Set new password page hero title
+  ///
+  /// In en, this message translates to:
+  /// **'Set New Password'**
+  String get setNewPasswordTitle;
+
+  /// Set new password hero subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Create a strong, unique password to secure your account'**
+  String get setNewPasswordSubtitle;
+
+  /// Section label for the two password fields
+  ///
+  /// In en, this message translates to:
+  /// **'Security Details'**
+  String get securityDetails;
+
+  /// New password field label
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// Requirements checklist header
+  ///
+  /// In en, this message translates to:
+  /// **'PASSWORD REQUIREMENTS'**
+  String get passwordRequirements;
+
+  /// Password requirement: minimum length
+  ///
+  /// In en, this message translates to:
+  /// **'At least 8 characters long'**
+  String get reqMinLength;
+
+  /// Password requirement: mixed case
+  ///
+  /// In en, this message translates to:
+  /// **'Includes uppercase & lowercase letters'**
+  String get reqMixedCase;
+
+  /// Password requirement: number or symbol
+  ///
+  /// In en, this message translates to:
+  /// **'Contains at least 1 number or special symbol'**
+  String get reqNumberOrSymbol;
+
+  /// CTA button on set new password page
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// Validator error when requirements not met
+  ///
+  /// In en, this message translates to:
+  /// **'Password does not meet all requirements'**
+  String get passwordRequirementsNotMet;
+
+  /// Snackbar shown after successful password reset
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset successfully! Please sign in.'**
+  String get passwordResetSuccess;
+
+  /// Title shown when oobCode is expired or used
+  ///
+  /// In en, this message translates to:
+  /// **'Link Expired'**
+  String get linkExpiredTitle;
+
+  /// Button to go back and request a new reset email
+  ///
+  /// In en, this message translates to:
+  /// **'Request New Link'**
+  String get requestNewLink;
 }
 
 class _AppLocalizationsDelegate

@@ -1,1 +1,41 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"field-service-app-1145a","appId":"1:400910919257:android:1966a3326dc701bac47348","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"field-service-app-1145a","configurations":{"android":"1:400910919257:android:1966a3326dc701bac47348","ios":"1:400910919257:ios:73b5d7f6bd3cffebc47348"}}}}}}
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "field-service-app-1145a",
+          "appId": "1:400910919257:android:1966a3326dc701bac47348",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "field-service-app-1145a",
+          "configurations": {
+            "android": "1:400910919257:android:1966a3326dc701bac47348",
+            "ios": "1:400910919257:ios:73b5d7f6bd3cffebc47348"
+          }
+        }
+      }
+    }
+  }
+}

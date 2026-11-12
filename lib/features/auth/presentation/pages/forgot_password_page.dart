@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../config/routes/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/forgot_password_bloc.dart';
@@ -173,7 +174,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
                 context
                     .read<ForgotPasswordBloc>()
                     .add(const ForgotPasswordEvent.resetState());
-                context.pop(); // back to login
+                context.go(RouteNames.login);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,

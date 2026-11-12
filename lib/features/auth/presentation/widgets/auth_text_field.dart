@@ -10,6 +10,9 @@ class AuthTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final IconData? prefixIcon;
+  // Optional callback fired on every keystroke — used by SetPasswordFormSection
+  // to trigger live password requirement evaluation in the BLoC.
+  final ValueChanged<String>? onChanged;
 
   const AuthTextField({
     super.key,
@@ -20,6 +23,7 @@ class AuthTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.prefixIcon,
+    this.onChanged,
   });
 
   @override
@@ -38,6 +42,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       obscureText: widget.isPassword && _obscure,
       keyboardType: widget.keyboardType,
       validator: widget.validator,
+      onChanged: widget.onChanged, // ← forwards to BLoC via onPasswordChanged
       style: TextStyle(
         color: isDark ? AppColors.darkOnSurface : AppColors.lightOnSurface,
         fontSize: 15,

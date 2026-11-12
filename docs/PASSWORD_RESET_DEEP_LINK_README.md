@@ -6,7 +6,42 @@ This document explains the end-to-end implementation of the **Forgot Password & 
 
 ---
 
-## 2. Complete Architecture & File Structure
+## 2. UI & Visual Design
+
+<p align="center">
+  <img src="assets/set_new_password_preview.png" alt="Set New Password Screen Preview" width="340" />
+</p>
+
+### Key UI Features:
+1. **Brand Gradient Header**:
+   - Teal brand gradient (`#00BFA6` to `#00897B`).
+   - One-tap language switcher pill (`العربية` / `English`) with full RTL support.
+   - White rounded container holding the Fixora logo.
+   - Dynamic typography adjusting cleanly across various screen sizes.
+
+2. **Security Details & Inputs**:
+   - Two obscure-text password fields (`New Password` and `Confirm Password`).
+   - Suffix visibility toggle icons (eye / eye-off).
+   - Validation indicator showing real-time match state.
+
+3. **Live Password Requirements Checklist**:
+   Updates interactively on every keystroke:
+   - [x] At least 8 characters long
+   - [x] Includes uppercase & lowercase letters
+   - [x] Contains at least 1 number or special symbol
+   - Icon turns from muted grey dot to green animated checkmark as each requirement is satisfied.
+
+4. **CTA Action Button**:
+   - `Reset Password ->` disabled until all rules pass and both fields match.
+   - Displays loading indicator during Firebase confirmation.
+
+5. **Support & Navigation**:
+   - Contact Support Team tile for user assistance.
+   - Bottom link returning user to `Sign In`.
+
+---
+
+## 3. Complete Architecture & File Structure
 
 ```
 lib/
@@ -50,7 +85,7 @@ public/
 
 ---
 
-## 3. End-to-End User Flow
+## 4. End-to-End User Flow
 
 ```mermaid
 sequenceDiagram
@@ -80,7 +115,7 @@ sequenceDiagram
 
 ---
 
-## 4. Deep Link Mechanics: How It Works Under the Hood
+## 5. Deep Link Mechanics: How It Works Under the Hood
 
 ### A. Why Links Wrap Inside `/__/auth/links`
 When Firebase sends an email with `ActionCodeSettings(handleCodeInApp: true)`, Firebase encodes the URL into a tracking wrapper:
@@ -102,7 +137,7 @@ In [`lib/core/services/deep_link_service.dart`](file:///d:/feild-app/lib/core/se
 
 ---
 
-## 5. Platform Configuration
+## 6. Platform Configuration
 
 ### Android (`android/app/src/main/AndroidManifest.xml`)
 - Declares `android:autoVerify="true"` for domain validation:
@@ -126,7 +161,7 @@ In [`lib/core/services/deep_link_service.dart`](file:///d:/feild-app/lib/core/se
 
 ---
 
-## 6. Testing Guide
+## 7. Testing Guide
 
 ### Manual Testing with ADB
 With the app installed on an emulator or physical device, run:
@@ -141,15 +176,15 @@ adb -s emulator-5554 shell am start -n com.ziadahmed.feild_service_app/.MainActi
 
 ---
 
-## 7. Pull Request Template / Summary
+## 8. Pull Request Template / Summary
 
 ```markdown
 ### Description
 Implements the complete "Forgot Password" and "Set New Password" flow using Firebase Authentication and App Links.
 
 ### Key Changes
+- **UI & Presentation**: Built `SetNewPasswordPage` matching Figma design (brand gradient, Cairo font, dark theme, interactive requirements checklist, live match validation, Arabic & English translations).
 - **Data & Domain**: Implemented `ForgotPasswordRepository`, `SendResetEmailUseCase`, `VerifyResetCodeUseCase`, and `ConfirmPasswordResetUseCase`.
-- **Presentation**: Built `SetNewPasswordPage` with live password strength checklist (8+ chars, mixed case, numbers/symbols) and Arabic/English localization.
 - **Deep Linking**: Integrated `app_links` with `DeepLinkService` to handle cold-start and runtime deep links, unwrapping nested Firebase `/__/auth/links` parameters.
 - **Routing**: Added routes for `/__/auth/links`, `/__/auth/action`, `/reset`, and `/set-new-password` in `GoRouter` with splash guard bypass.
 - **Platform Setup**: Configured `AndroidManifest.xml` with `autoVerify="true"` and deployed `assetlinks.json` to Firebase Hosting.
@@ -158,4 +193,3 @@ Implements the complete "Forgot Password" and "Set New Password" flow using Fire
 - `flutter analyze --no-fatal-infos` passes with 0 issues.
 - Tested deep-link intent resolution and navigation via ADB and Firebase email link.
 ```
-

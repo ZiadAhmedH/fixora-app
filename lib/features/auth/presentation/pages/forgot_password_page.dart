@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/route_names.dart';
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/forgot_password_bloc.dart';
@@ -89,20 +88,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
                     opacity: _fadeAnim,
                     child: SlideTransition(
                       position: _slideAnim,
-                      child: Center(
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxWidth: AppConstants.maxFormWidth,
-                          ),
-                          child: ForgotPasswordFormSection(
-                            isDark: isDark,
-                            formKey: _formKey,
-                            emailCtrl: _emailCtrl,
-                            selectedMethod: selectedMethod,
-                            isLoading: isLoading,
-                            onSubmit: _submit,
-                          ),
-                        ),
+                      child: ForgotPasswordFormSection(
+                        isDark: isDark,
+                        formKey: _formKey,
+                        emailCtrl: _emailCtrl,
+                        selectedMethod: selectedMethod,
+                        isLoading: isLoading,
+                        onSubmit: _submit,
                       ),
                     ),
                   ),

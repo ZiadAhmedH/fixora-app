@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_constants.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/blocs/locale/locale_bloc.dart';
 
@@ -36,77 +35,69 @@ class ForgotPasswordHeroSection extends StatelessWidget {
       ),
       child: SafeArea(
         bottom: false,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: AppConstants.maxFormWidth,
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: (sh * 0.016).clamp(10.0, 18.0),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: (sh * 0.016).clamp(10.0, 18.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
+                alignment: AlignmentDirectional.topEnd,
+                child: _LanguageSwitcher(isAr: isAr),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    child: _LanguageSwitcher(isAr: isAr),
-                  ),
-                  SizedBox(height: gapSmall),
-                  Container(
-                    width: logoSize,
-                    height: logoSize,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(logoSize * 0.28),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.15),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
+              SizedBox(height: gapSmall),
+              Container(
+                width: logoSize,
+                height: logoSize,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(logoSize * 0.28),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.15),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
                     ),
-                    padding: EdgeInsets.all(logoSize * 0.14),
-                    child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
-                  ),
-                  SizedBox(height: gapMedium),
-                  Text(
-                    l10n.forgotPasswordTitle,
-                    style: TextStyle(
-                      fontSize: titleSize,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      height: 1.2,
-                      letterSpacing: -0.3,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: gapSmall),
-                  Text(
-                    l10n.forgotPasswordSubtitle,
-                    style: TextStyle(
-                      fontSize: subtitleSize,
-                      color: Colors.white.withValues(alpha: 0.85),
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: gapSmall * 0.5),
-                  Text(
-                    l10n.forgotPasswordBody,
-                    style: TextStyle(
-                      fontSize: subtitleSize,
-                      color: Colors.white.withValues(alpha: 0.85),
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                  ],
+                ),
+                padding: EdgeInsets.all(logoSize * 0.14),
+                child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
               ),
-            ),
+              SizedBox(height: gapMedium),
+              Text(
+                l10n.forgotPasswordTitle,
+                style: TextStyle(
+                  fontSize: titleSize,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  height: 1.2,
+                  letterSpacing: -0.3,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: gapSmall),
+              Text(
+                l10n.forgotPasswordSubtitle,
+                style: TextStyle(
+                  fontSize: subtitleSize,
+                  color: Colors.white.withValues(alpha: 0.85),
+                  fontWeight: FontWeight.w400,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: gapSmall * 0.5),
+              Text(
+                l10n.forgotPasswordBody,
+                style: TextStyle(
+                  fontSize: subtitleSize,
+                  color: Colors.white.withValues(alpha: 0.70),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       ),

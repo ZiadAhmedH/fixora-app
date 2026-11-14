@@ -143,23 +143,16 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
             opacity: _fadeAnim,
             child: SlideTransition(
               position: _slideAnim,
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: AppConstants.maxFormWidth,
-                  ),
-                  child: SetPasswordFormSection(
-                    isDark: isDark,
-                    formKey: _formKey,
-                    email: email,
-                    passwordCtrl: _passwordCtrl,
-                    confirmCtrl: _confirmCtrl,
-                    requirements: requirements,
-                    isLoading: isLoading,
-                    onPasswordChanged: _onPasswordChanged,
-                    onSubmit: _submit,
-                  ),
-                ),
+              child: SetPasswordFormSection(
+                isDark: isDark,
+                formKey: _formKey,
+                email: email,
+                passwordCtrl: _passwordCtrl,
+                confirmCtrl: _confirmCtrl,
+                requirements: requirements,
+                isLoading: isLoading,
+                onPasswordChanged: _onPasswordChanged,
+                onSubmit: _submit,
               ),
             ),
           ),

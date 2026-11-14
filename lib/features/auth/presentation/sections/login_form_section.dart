@@ -52,149 +52,156 @@ class LoginFormSection extends StatelessWidget {
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LoginSectionLabel(isDark: isDark, label: l10n.credentials),
-              const SizedBox(height: 14),
-
-              AuthTextField(
-                label: l10n.email,
-                hint: AppConstants.emailHint,
-                controller: emailCtrl,
-                keyboardType: TextInputType.emailAddress,
-                prefixIcon: Icons.email_outlined,
-                validator: (v) {
-                  if (v == null || v.isEmpty) return l10n.enterYourEmail;
-                  if (!v.contains('@')) return l10n.invalidEmail;
-                  return null;
-                },
-              ),
-              const SizedBox(height: 12),
-
-              AuthTextField(
-                label: l10n.password,
-                hint: AppConstants.passwordMaskHint,
-                controller: passCtrl,
-                isPassword: true,
-                prefixIcon: Icons.lock_outline,
-                validator: (v) {
-                  if (v == null || v.isEmpty) return l10n.enterYourPassword;
-                  if (v.length < 6) return l10n.minSixChars;
-                  return null;
-                },
-              ),
-
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: TextButton(
-                  onPressed: () => context.push(RouteNames.forgotPassword),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                      vertical: 8,
-                    ),
-                    minimumSize: Size.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text(
-                    l10n.forgotPassword,
-                    style: const TextStyle(
-                      color: AppColors.primary,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 6),
-
-              BlocBuilder<AuthBloc, AuthState>(
-                buildWhen: (p, c) => c.maybeMap(
-                  loadingEmail: (_) => true,
-                  loadingGoogle: (_) => true,
-                  failure: (_) => true,
-                  unauthenticated: (_) => true,
-                  orElse: () => false,
-                ),
-                builder: (context, state) {
-                  final isEmailLoading = state.maybeMap(
-                    loadingEmail: (_) => true,
-                    orElse: () => false,
-                  );
-                  final isGoogleLoading = state.maybeMap(
-                    loadingGoogle: (_) => true,
-                    orElse: () => false,
-                  );
-                  return PrimaryAuthButton(
-                    label: l10n.signIn,
-                    isLoading: isEmailLoading,
-                    onPressed: (isEmailLoading || isGoogleLoading)
-                        ? null
-                        : onSubmit,
-                  );
-                },
-              ),
-              const SizedBox(height: 22),
-
-              LoginSectionLabel(isDark: isDark, label: l10n.orContinueWith),
-              const SizedBox(height: 14),
-
-              BlocBuilder<AuthBloc, AuthState>(
-                buildWhen: (p, c) => c.maybeMap(
-                  loadingEmail: (_) => true,
-                  loadingGoogle: (_) => true,
-                  failure: (_) => true,
-                  unauthenticated: (_) => true,
-                  orElse: () => false,
-                ),
-                builder: (context, state) {
-                  final isGoogleLoading = state.maybeMap(
-                    loadingGoogle: (_) => true,
-                    orElse: () => false,
-                  );
-                  final isEmailLoading = state.maybeMap(
-                    loadingEmail: (_) => true,
-                    orElse: () => false,
-                  );
-                  return GoogleSignInButton(
-                    isLoading: isGoogleLoading,
-                    onPressed: (isGoogleLoading || isEmailLoading)
-                        ? null
-                        : onGoogleSignIn,
-                  );
-                },
-              ),
-              const SizedBox(height: 28),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: AppConstants.maxFormWidth,
+            ),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '${l10n.dontHaveAccount} ',
-                    style: TextStyle(
-                      color: isDark
-                          ? AppColors.darkOnSurfaceVariant
-                          : AppColors.grey500,
-                      fontSize: 14,
-                    ),
+                  LoginSectionLabel(isDark: isDark, label: l10n.credentials),
+                  const SizedBox(height: 14),
+
+                  AuthTextField(
+                    label: l10n.email,
+                    hint: AppConstants.emailHint,
+                    controller: emailCtrl,
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: Icons.email_outlined,
+                    validator: (v) {
+                      if (v == null || v.isEmpty) return l10n.enterYourEmail;
+                      if (!v.contains('@')) return l10n.invalidEmail;
+                      return null;
+                    },
                   ),
-                  GestureDetector(
-                    onTap: () => context.push(RouteNames.register),
-                    child: Text(
-                      l10n.register,
-                      style: const TextStyle(
-                        color: AppColors.primary,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                  const SizedBox(height: 12),
+
+                  AuthTextField(
+                    label: l10n.password,
+                    hint: AppConstants.passwordMaskHint,
+                    controller: passCtrl,
+                    isPassword: true,
+                    prefixIcon: Icons.lock_outline,
+                    validator: (v) {
+                      if (v == null || v.isEmpty) return l10n.enterYourPassword;
+                      if (v.length < 6) return l10n.minSixChars;
+                      return null;
+                    },
+                  ),
+
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: TextButton(
+                      onPressed: () => context.push(RouteNames.forgotPassword),
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 8,
+                        ),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      child: Text(
+                        l10n.forgotPassword,
+                        style: const TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
+                  const SizedBox(height: 6),
+
+                  BlocBuilder<AuthBloc, AuthState>(
+                    buildWhen: (p, c) => c.maybeMap(
+                      loadingEmail: (_) => true,
+                      loadingGoogle: (_) => true,
+                      failure: (_) => true,
+                      unauthenticated: (_) => true,
+                      orElse: () => false,
+                    ),
+                    builder: (context, state) {
+                      final isEmailLoading = state.maybeMap(
+                        loadingEmail: (_) => true,
+                        orElse: () => false,
+                      );
+                      final isGoogleLoading = state.maybeMap(
+                        loadingGoogle: (_) => true,
+                        orElse: () => false,
+                      );
+                      return PrimaryAuthButton(
+                        label: l10n.signIn,
+                        isLoading: isEmailLoading,
+                        onPressed: (isEmailLoading || isGoogleLoading)
+                            ? null
+                            : onSubmit,
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 22),
+
+                  LoginSectionLabel(isDark: isDark, label: l10n.orContinueWith),
+                  const SizedBox(height: 14),
+
+                  BlocBuilder<AuthBloc, AuthState>(
+                    buildWhen: (p, c) => c.maybeMap(
+                      loadingEmail: (_) => true,
+                      loadingGoogle: (_) => true,
+                      failure: (_) => true,
+                      unauthenticated: (_) => true,
+                      orElse: () => false,
+                    ),
+                    builder: (context, state) {
+                      final isGoogleLoading = state.maybeMap(
+                        loadingGoogle: (_) => true,
+                        orElse: () => false,
+                      );
+                      final isEmailLoading = state.maybeMap(
+                        loadingEmail: (_) => true,
+                        orElse: () => false,
+                      );
+                      return GoogleSignInButton(
+                        isLoading: isGoogleLoading,
+                        onPressed: (isGoogleLoading || isEmailLoading)
+                            ? null
+                            : onGoogleSignIn,
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 28),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${l10n.dontHaveAccount} ',
+                        style: TextStyle(
+                          color: isDark
+                              ? AppColors.darkOnSurfaceVariant
+                              : AppColors.grey500,
+                          fontSize: 14,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => context.push(RouteNames.register),
+                        child: Text(
+                          l10n.register,
+                          style: const TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

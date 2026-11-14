@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/app_user.dart';
@@ -124,25 +123,18 @@ class _RegisterPageState extends State<RegisterPage>
                   opacity: _fadeAnim,
                   child: SlideTransition(
                     position: _slideAnim,
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxWidth: AppConstants.maxFormWidth,
-                        ),
-                        child: RegisterFormSection(
-                          isDark: isDark,
-                          formKey: _formKey,
-                          nameCtrl: _nameCtrl,
-                          emailCtrl: _emailCtrl,
-                          passCtrl: _passCtrl,
-                          confirmPassCtrl: _confirmPassCtrl,
-                          selectedRole: _selectedRole,
-                          onRoleChanged: (role) =>
-                              setState(() => _selectedRole = role),
-                          onSubmit: _submit,
-                          onGoogleSignIn: _googleSignIn,
-                        ),
-                      ),
+                    child: RegisterFormSection(
+                      isDark: isDark,
+                      formKey: _formKey,
+                      nameCtrl: _nameCtrl,
+                      emailCtrl: _emailCtrl,
+                      passCtrl: _passCtrl,
+                      confirmPassCtrl: _confirmPassCtrl,
+                      selectedRole: _selectedRole,
+                      onRoleChanged: (role) =>
+                          setState(() => _selectedRole = role),
+                      onSubmit: _submit,
+                      onGoogleSignIn: _googleSignIn,
                     ),
                   ),
                 ),

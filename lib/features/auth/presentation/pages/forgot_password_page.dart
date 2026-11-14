@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/route_names.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/forgot_password_bloc.dart';
@@ -52,7 +53,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
     context.read<ForgotPasswordBloc>().add(
-          ForgotPasswordEvent.sendRequested(email: _emailCtrl.text),
+          ForgotPasswordEvent.sendRequested(email: _emailCtrl.text.trim()),
         );
   }
 
@@ -63,42 +64,53 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
     return Scaffold(
       backgroundColor:
           isDark ? AppColors.darkBackground : AppColors.lightBackground,
-      body: BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
-        listener: _listener,
-        builder: (context, state) {
-          final isLoading = state.maybeMap(
-            loading: (_) => true,
-            orElse: () => false,
-          );
-          final selectedMethod = state.map(
-            initial: (s) => s.method,
-            loading: (s) => s.method,
-            success: (s) => s.method,
-            failure: (s) => s.method,
-          );
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        behavior: HitTestBehavior.opaque,
+        child: BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
+          listener: _listener,
+          builder: (context, state) {
+            final isLoading = state.maybeMap(
+              loading: (_) => true,
+              orElse: () => false,
+            );
+            final selectedMethod = state.map(
+              initial: (s) => s.method,
+              loading: (s) => s.method,
+              success: (s) => s.method,
+              failure: (s) => s.method,
+            );
 
-          return Column(
-            children: [
-              ForgotPasswordHeroSection(isDark: isDark),
-              Expanded(
-                child: FadeTransition(
-                  opacity: _fadeAnim,
-                  child: SlideTransition(
-                    position: _slideAnim,
-                    child: ForgotPasswordFormSection(
-                      isDark: isDark,
-                      formKey: _formKey,
-                      emailCtrl: _emailCtrl,
-                      selectedMethod: selectedMethod,
-                      isLoading: isLoading,
-                      onSubmit: _submit,
+            return Column(
+              children: [
+                ForgotPasswordHeroSection(isDark: isDark),
+                Expanded(
+                  child: FadeTransition(
+                    opacity: _fadeAnim,
+                    child: SlideTransition(
+                      position: _slideAnim,
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxWidth: AppConstants.maxFormWidth,
+                          ),
+                          child: ForgotPasswordFormSection(
+                            isDark: isDark,
+                            formKey: _formKey,
+                            emailCtrl: _emailCtrl,
+                            selectedMethod: selectedMethod,
+                            isLoading: isLoading,
+                            onSubmit: _submit,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
   }

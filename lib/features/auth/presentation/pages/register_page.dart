@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/app_user.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
@@ -59,86 +61,94 @@ class _RegisterPageState extends State<RegisterPage>
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
     context.read<AuthBloc>().add(
-      AuthEvent.register(
-        email: _emailCtrl.text.trim(),
-        password: _passCtrl.text,
-        displayName: _nameCtrl.text.trim(),
-        role: _selectedRole,
-      ),
-    );
+          AuthEvent.register(
+            email: _emailCtrl.text.trim(),
+            password: _passCtrl.text,
+            displayName: _nameCtrl.text.trim(),
+            role: _selectedRole,
+          ),
+        );
   }
 
   void _googleSignIn() {
     context.read<AuthBloc>().add(
-      AuthEvent.loginWithGoogle(role: _selectedRole),
-    );
+          AuthEvent.loginWithGoogle(role: _selectedRole),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      backgroundColor: isDark
-          ? AppColors.darkBackground
-          : AppColors.lightBackground,
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeMap(
-            registerSuccess: (_) {
-              ScaffoldMessenger.of(context).showSnackBar(
+      backgroundColor:
+          isDark ? AppColors.darkBackground : AppColors.lightBackground,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        behavior: HitTestBehavior.opaque,
+        child: BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            state.maybeMap(
+              registerSuccess: (_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(l10n.accountCreatedSuccess),
+                    backgroundColor: AppColors.success,
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                );
+                context.pop();
+              },
+              failure: (f) => ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: const Text('Account created! Please sign in.'),
-                  backgroundColor: AppColors.success,
+                  content: Text(f.message),
+                  backgroundColor: AppColors.error,
                   behavior: SnackBarBehavior.floating,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-              );
-              context.pop();
-            },
-            failure: (f) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(f.message),
-                backgroundColor: AppColors.error,
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
               ),
-            ),
-            orElse: () {},
-          );
-        },
-        child: Column(
-          children: [
-            // ── Section 1: Hero / Branding ──────────────────────────────
-            RegisterHeroSection(),
-
-            // ── Section 2: Form Card ────────────────────────────────────
-            Expanded(
-              child: FadeTransition(
-                opacity: _fadeAnim,
-                child: SlideTransition(
-                  position: _slideAnim,
-                  child: RegisterFormSection(
-                    isDark: isDark,
-                    formKey: _formKey,
-                    nameCtrl: _nameCtrl,
-                    emailCtrl: _emailCtrl,
-                    passCtrl: _passCtrl,
-                    confirmPassCtrl: _confirmPassCtrl,
-                    selectedRole: _selectedRole,
-                    onRoleChanged: (role) =>
-                        setState(() => _selectedRole = role),
-                    onSubmit: _submit,
-                    onGoogleSignIn: _googleSignIn,
+              orElse: () {},
+            );
+          },
+          child: Column(
+            children: [
+              const RegisterHeroSection(),
+              Expanded(
+                child: FadeTransition(
+                  opacity: _fadeAnim,
+                  child: SlideTransition(
+                    position: _slideAnim,
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: AppConstants.maxFormWidth,
+                        ),
+                        child: RegisterFormSection(
+                          isDark: isDark,
+                          formKey: _formKey,
+                          nameCtrl: _nameCtrl,
+                          emailCtrl: _emailCtrl,
+                          passCtrl: _passCtrl,
+                          confirmPassCtrl: _confirmPassCtrl,
+                          selectedRole: _selectedRole,
+                          onRoleChanged: (role) =>
+                              setState(() => _selectedRole = role),
+                          onSubmit: _submit,
+                          onGoogleSignIn: _googleSignIn,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

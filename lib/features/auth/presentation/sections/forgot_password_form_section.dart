@@ -48,6 +48,7 @@ class ForgotPasswordFormSection extends StatelessWidget {
         ],
       ),
       child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 32),
         child: Form(
           key: formKey,
@@ -314,7 +315,20 @@ class _SupportTile extends StatelessWidget {
       child: ListTile(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        onTap: () {/* TODO: open support channel */},
+        onTap: () {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(l10n.supportDetails),
+                backgroundColor: AppColors.primary,
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            );
+        },
         leading: Container(
           width: 38,
           height: 38,

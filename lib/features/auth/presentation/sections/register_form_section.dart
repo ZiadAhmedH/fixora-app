@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/app_user.dart';
@@ -12,7 +13,6 @@ import '../widgets/google_sign_in_button.dart';
 import '../widgets/primary_auth_button.dart';
 import 'login_section_label.dart';
 
-/// Section 2 — Rounded card with the full registration form.
 class RegisterFormSection extends StatelessWidget {
   final bool isDark;
   final GlobalKey<FormState> formKey;
@@ -58,23 +58,21 @@ class RegisterFormSection extends StatelessWidget {
         ],
       ),
       child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
         child: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Role section ──────────────────────────────────────────
               LoginSectionLabel(isDark: isDark, label: l10n.iAmRegisteringAs),
               const SizedBox(height: 12),
               _RoleSelector(selected: selectedRole, onChanged: onRoleChanged),
               const SizedBox(height: 22),
 
-              // ── Details section ───────────────────────────────────────
               LoginSectionLabel(isDark: isDark, label: l10n.accountDetails),
               const SizedBox(height: 14),
 
-              // Full name
               AuthTextField(
                 label: l10n.fullName,
                 hint: l10n.fullNameHint,
@@ -88,10 +86,9 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Email
               AuthTextField(
                 label: l10n.email,
-                hint: 'you@example.com',
+                hint: AppConstants.emailHint,
                 controller: emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 prefixIcon: Icons.email_outlined,
@@ -103,10 +100,9 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Password
               AuthTextField(
                 label: l10n.password,
-                hint: '••••••••',
+                hint: AppConstants.passwordMaskHint,
                 controller: passCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
@@ -118,10 +114,9 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Confirm password
               AuthTextField(
                 label: l10n.confirmPassword,
-                hint: '••••••••',
+                hint: AppConstants.passwordMaskHint,
                 controller: confirmPassCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
@@ -133,7 +128,6 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 22),
 
-              // ── Create Account button ─────────────────────────────────
               BlocBuilder<AuthBloc, AuthState>(
                 buildWhen: (p, c) => c.maybeMap(
                   loading: (_) => true,
@@ -156,7 +150,6 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // ── Or continue with ──────────────────────────────────────
               LoginSectionLabel(isDark: isDark, label: l10n.orContinueWith),
               const SizedBox(height: 14),
 
@@ -181,7 +174,6 @@ class RegisterFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 28),
 
-              // ── Login link ────────────────────────────────────────────
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -207,7 +199,6 @@ class RegisterFormSection extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -215,8 +206,6 @@ class RegisterFormSection extends StatelessWidget {
     );
   }
 }
-
-// ── Role Selector ────────────────────────────────────────────────────────────
 
 class _RoleSelector extends StatelessWidget {
   final UserRole selected;
@@ -233,7 +222,7 @@ class _RoleSelector extends StatelessWidget {
           child: _RoleCard(
             label: l10n.roleClient,
             subtitle: l10n.roleClientSubtitle,
-            icon: Icons.business_center_outlined,
+            icon: Icons.person_outline,
             isSelected: selected == UserRole.client,
             onTap: () => onChanged(UserRole.client),
           ),
@@ -272,79 +261,59 @@ class _RoleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        color: isSelected
-            ? AppColors.primary.withValues(alpha: isDark ? 0.18 : 0.08)
-            : (isDark ? AppColors.darkSurfaceVariant : AppColors.lightSurface),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+        decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.primary
-              : (isDark ? AppColors.grey700 : AppColors.grey200),
-          width: isSelected ? 2 : 1,
-        ),
-        boxShadow: isSelected
-            ? [
-                BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.15),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ]
-            : null,
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-          child: Column(
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.primary
-                      : (isDark ? AppColors.darkBackground : AppColors.grey100),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  size: 22,
-                  color: isSelected
-                      ? Colors.white
-                      : (isDark ? AppColors.grey400 : AppColors.grey600),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                label,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                  color: isSelected
-                      ? AppColors.primary
-                      : (isDark
-                            ? AppColors.darkOnSurface
-                            : AppColors.lightOnSurface),
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: TextStyle(
-                  fontSize: 11,
-                  color: isDark
-                      ? AppColors.darkOnSurfaceVariant
-                      : AppColors.lightOnSurfaceVariant,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              ? AppColors.primary.withValues(alpha: isDark ? 0.18 : 0.10)
+              : (isDark ? AppColors.darkSurfaceVariant : AppColors.grey50),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: isSelected
+                ? AppColors.primary
+                : (isDark ? AppColors.grey700 : AppColors.grey200),
+            width: isSelected ? 1.8 : 1.0,
           ),
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              size: 24,
+              color: isSelected
+                  ? AppColors.primary
+                  : (isDark
+                      ? AppColors.darkOnSurfaceVariant
+                      : AppColors.lightOnSurfaceVariant),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                color: isSelected
+                    ? AppColors.primary
+                    : (isDark
+                        ? AppColors.darkOnSurface
+                        : AppColors.lightOnSurface),
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              subtitle,
+              style: TextStyle(
+                fontSize: 11,
+                color: isDark
+                    ? AppColors.darkOnSurfaceVariant
+                    : AppColors.lightOnSurfaceVariant,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/set_password_state.dart';
@@ -76,27 +77,25 @@ class SetPasswordFormSection extends StatelessWidget {
         ],
       ),
       child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 32),
         child: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Security Details Section ──────────────────────────
               LoginSectionLabel(
                 isDark: isDark,
                 label: l10n.securityDetails,
               ),
               const SizedBox(height: 14),
 
-              // New Password field
               AuthTextField(
                 label: l10n.newPassword,
-                hint: '••••••••',
+                hint: AppConstants.passwordMaskHint,
                 controller: passwordCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
-                // Live update the requirements display on every keystroke.
                 onChanged: (_) => onPasswordChanged(),
                 validator: (v) {
                   if (v == null || v.isEmpty) return l10n.enterAPassword;
@@ -108,10 +107,9 @@ class SetPasswordFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Confirm Password field
               AuthTextField(
                 label: l10n.confirmPassword,
-                hint: '••••••••',
+                hint: AppConstants.passwordMaskHint,
                 controller: confirmCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
@@ -297,7 +295,20 @@ class _SupportTile extends StatelessWidget {
       ),
       child: ListTile(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        onTap: () {/* TODO: open support channel */},
+        onTap: () {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(l10n.supportDetails),
+                backgroundColor: AppColors.primary,
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            );
+        },
         leading: Container(
           width: 38,
           height: 38,

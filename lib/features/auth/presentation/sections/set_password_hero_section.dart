@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/blocs/locale/locale_bloc.dart';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SetPasswordHeroSection
-// ─────────────────────────────────────────────────────────────────────────────
-// Green gradient header matching the design — same structure as the
-// other hero sections in the auth flow (login, register, forgot password).
-// ─────────────────────────────────────────────────────────────────────────────
 
 class SetPasswordHeroSection extends StatelessWidget {
   final bool isDark;
@@ -42,67 +36,66 @@ class SetPasswordHeroSection extends StatelessWidget {
       ),
       child: SafeArea(
         bottom: false,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: (sh * 0.016).clamp(10.0, 18.0),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // ── Language switcher ──────────────────────────────────
-              Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: _LanguageSwitcher(isAr: isAr),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: AppConstants.maxFormWidth,
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: (sh * 0.016).clamp(10.0, 18.0),
               ),
-              SizedBox(height: gapSmall),
-
-              // ── App Logo ───────────────────────────────────────────
-              Container(
-                width: logoSize,
-                height: logoSize,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(logoSize * 0.28),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional.topEnd,
+                    child: _LanguageSwitcher(isAr: isAr),
+                  ),
+                  SizedBox(height: gapSmall),
+                  Container(
+                    width: logoSize,
+                    height: logoSize,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(logoSize * 0.28),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.15),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                padding: EdgeInsets.all(logoSize * 0.14),
-                child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
+                    padding: EdgeInsets.all(logoSize * 0.14),
+                    child: Image.asset(AppAssets.logo, fit: BoxFit.contain),
+                  ),
+                  SizedBox(height: gapMedium),
+                  Text(
+                    l10n.setNewPasswordTitle,
+                    style: TextStyle(
+                      fontSize: titleSize,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      height: 1.2,
+                      letterSpacing: -0.3,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: gapSmall),
+                  Text(
+                    l10n.setNewPasswordSubtitle,
+                    style: TextStyle(
+                      fontSize: subtitleSize,
+                      color: Colors.white.withValues(alpha: 0.80),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              SizedBox(height: gapMedium),
-
-              // ── Title ──────────────────────────────────────────────
-              Text(
-                l10n.setNewPasswordTitle,
-                style: TextStyle(
-                  fontSize: titleSize,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                  height: 1.2,
-                  letterSpacing: -0.3,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: gapSmall),
-
-              // ── Subtitle ───────────────────────────────────────────
-              Text(
-                l10n.setNewPasswordSubtitle,
-                style: TextStyle(
-                  fontSize: subtitleSize,
-                  color: Colors.white.withValues(alpha: 0.80),
-                  fontWeight: FontWeight.w400,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -150,4 +143,3 @@ class _LanguageSwitcher extends StatelessWidget {
     );
   }
 }
-

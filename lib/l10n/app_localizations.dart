@@ -769,6 +769,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Request New Link'**
   String get requestNewLink;
+
+  /// Snackbar shown after registration
+  ///
+  /// In en, this message translates to:
+  /// **'Account created! Please sign in.'**
+  String get accountCreatedSuccess;
+
+  /// Support channel dialog/snackbar info
+  ///
+  /// In en, this message translates to:
+  /// **'Support: support@fixora.com | +966 800 FIXORA'**
+  String get supportDetails;
 }
 
 class _AppLocalizationsDelegate

@@ -336,5 +336,11 @@
   "@linkExpiredTitle": { "description": "Title shown when oobCode is expired or used" },
 
   "requestNewLink": "Request New Link",
-  "@requestNewLink": { "description": "Button to go back and request a new reset email" }
+  "@requestNewLink": { "description": "Button to go back and request a new reset email" },
+
+  "accountCreatedSuccess": "Account created! Please sign in.",
+  "@accountCreatedSuccess": { "description": "Snackbar shown after registration" },
+
+  "supportDetails": "Support: support@fixora.com | +966 800 FIXORA",
+  "@supportDetails": { "description": "Support channel dialog/snackbar info" }
 }

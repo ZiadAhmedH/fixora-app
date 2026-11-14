@@ -350,4 +350,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get requestNewLink => 'طلب رابط جديد';
+
+  @override
+  String get accountCreatedSuccess =>
+      'تم إنشاء الحساب بنجاح! يرجى تسجيل الدخول.';
+
+  @override
+  String get supportDetails => 'الدعم: support@fixora.com | +966 800 FIXORA';
 }

@@ -352,4 +352,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get requestNewLink => 'Request New Link';
+
+  @override
+  String get accountCreatedSuccess => 'Account created! Please sign in.';
+
+  @override
+  String get supportDetails => 'Support: support@fixora.com | +966 800 FIXORA';
 }

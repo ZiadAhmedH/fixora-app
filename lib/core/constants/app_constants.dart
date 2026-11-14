@@ -2,9 +2,18 @@
 class AppConstants {
   AppConstants._();
 
-  // ── App Info ──────────────────────────────────────────────
-  static const String appName = 'Field Service App';
+  // App Info
+  static const String appName = 'Fixora';
   static const String appVersion = '1.0.0';
+
+  // Responsive Layout Constraints
+  static const double maxFormWidth = 500.0;
+
+  // UI Input Hints & Static Values
+  static const String emailHint = 'you@example.com';
+  static const String passwordMaskHint = '••••••••';
+  static const String supportEmail = 'support@fixora.com';
+  static const String supportPhone = '+966 800 FIXORA';
 
   // ── Network ───────────────────────────────────────────────
   static const String baseUrl = 'https://api.example.com/v1';

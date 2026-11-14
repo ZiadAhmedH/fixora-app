@@ -1,11 +1,13 @@
-import 'package:feild_service_app/features/auth/presentation/sections/login_form_section.dart';
-import 'package:feild_service_app/features/auth/presentation/sections/login_hero_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
+import '../sections/login_form_section.dart';
+import '../sections/login_hero_section.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -50,11 +52,11 @@ class _LoginPageState extends State<LoginPage>
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
     context.read<AuthBloc>().add(
-      AuthEvent.loginWithEmail(
-        email: _emailCtrl.text.trim(),
-        password: _passCtrl.text,
-      ),
-    );
+          AuthEvent.loginWithEmail(
+            email: _emailCtrl.text.trim(),
+            password: _passCtrl.text,
+          ),
+        );
   }
 
   void _googleSignIn() {
@@ -66,46 +68,55 @@ class _LoginPageState extends State<LoginPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark
-          ? AppColors.darkBackground
-          : AppColors.lightBackground,
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeMap(
-            failure: (f) => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(f.message),
-                backgroundColor: AppColors.error,
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-            orElse: () {},
-          );
-        },
-        child: Column(
-          children: [
-            LoginHeroSection(),
-
-            Expanded(
-              child: FadeTransition(
-                opacity: _fadeAnim,
-                child: SlideTransition(
-                  position: _slideAnim,
-                  child: LoginFormSection(
-                    isDark: isDark,
-                    formKey: _formKey,
-                    emailCtrl: _emailCtrl,
-                    passCtrl: _passCtrl,
-                    onSubmit: _submit,
-                    onGoogleSignIn: _googleSignIn,
+      backgroundColor:
+          isDark ? AppColors.darkBackground : AppColors.lightBackground,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        behavior: HitTestBehavior.opaque,
+        child: BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            state.maybeMap(
+              failure: (f) => ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(f.message),
+                  backgroundColor: AppColors.error,
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
-            ),
-          ],
+              orElse: () {},
+            );
+          },
+          child: Column(
+            children: [
+              const LoginHeroSection(),
+              Expanded(
+                child: FadeTransition(
+                  opacity: _fadeAnim,
+                  child: SlideTransition(
+                    position: _slideAnim,
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: AppConstants.maxFormWidth,
+                        ),
+                        child: LoginFormSection(
+                          isDark: isDark,
+                          formKey: _formKey,
+                          emailCtrl: _emailCtrl,
+                          passCtrl: _passCtrl,
+                          onSubmit: _submit,
+                          onGoogleSignIn: _googleSignIn,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

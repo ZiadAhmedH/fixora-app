@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/route_names.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../bloc/auth_bloc.dart';
@@ -49,20 +50,19 @@ class LoginFormSection extends StatelessWidget {
         ],
       ),
       child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
         child: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Credentials section ─────────────────────────────────
               LoginSectionLabel(isDark: isDark, label: l10n.credentials),
               const SizedBox(height: 14),
 
-              // ── Email ───────────────────────────────────────────────
               AuthTextField(
                 label: l10n.email,
-                hint: 'you@example.com',
+                hint: AppConstants.emailHint,
                 controller: emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 prefixIcon: Icons.email_outlined,
@@ -74,10 +74,9 @@ class LoginFormSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // ── Password ────────────────────────────────────────────
               AuthTextField(
                 label: l10n.password,
-                hint: '••••••••',
+                hint: AppConstants.passwordMaskHint,
                 controller: passCtrl,
                 isPassword: true,
                 prefixIcon: Icons.lock_outline,
@@ -88,7 +87,6 @@ class LoginFormSection extends StatelessWidget {
                 },
               ),
 
-              // ── Forgot password ─────────────────────────────────────
               Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
@@ -144,7 +142,6 @@ class LoginFormSection extends StatelessWidget {
               LoginSectionLabel(isDark: isDark, label: l10n.orContinueWith),
               const SizedBox(height: 14),
 
-              // Google button
               BlocBuilder<AuthBloc, AuthState>(
                 buildWhen: (p, c) => c.maybeMap(
                   loadingEmail: (_) => true,

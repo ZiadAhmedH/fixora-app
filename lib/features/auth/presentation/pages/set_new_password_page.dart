@@ -2,43 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../config/routes/route_names.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../../config/routes/route_names.dart';
 import '../bloc/set_password_bloc.dart';
 import '../bloc/set_password_event.dart';
 import '../bloc/set_password_state.dart';
 import '../sections/set_password_form_section.dart';
 import '../sections/set_password_hero_section.dart';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SetNewPasswordPage
-// ─────────────────────────────────────────────────────────────────────────────
-//
-// HOW THIS PAGE IS REACHED:
-//   The user taps the reset link in their email →
-//   the OS opens this Flutter app via a deep link →
-//   GoRouter parses the URL and extracts the [oobCode] query parameter →
-//   GoRouter navigates to RouteNames.setNewPassword, passing [oobCode] as extra →
-//   This page is built with a [SetPasswordBloc] that receives [oobCode].
-//
-// ON LOAD:
-//   The BLoC immediately fires [SetPasswordEvent.started] which calls
-//   [VerifyResetCodeUseCase] to check the code is still valid.
-//   This protects against expired or already-used links.
-//
-// STATES HANDLED:
-//   • validating  → show loading spinner (checking code with Firebase)
-//   • codeError   → show error screen with "Request New Link" button
-//   • ready       → show the password form
-//   • loading     → spinner on button, form disabled
-//   • success     → navigate to login with success snackbar
-//   • failure     → snackbar with error, form stays visible
-// ─────────────────────────────────────────────────────────────────────────────
-
 class SetNewPasswordPage extends StatefulWidget {
-  /// The one-time code from the Firebase reset email deep link.
-  /// GoRouter extracts this from the URL query parameter: ?oobCode=XYZ
   final String oobCode;
 
   const SetNewPasswordPage({super.key, required this.oobCode});
@@ -60,8 +34,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
   @override
   void initState() {
     super.initState();
-
-    // Entrance animation — same style as login/register screens.
     _animCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 700),
@@ -73,8 +45,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
     ).animate(CurvedAnimation(parent: _animCtrl, curve: Curves.easeOut));
     _animCtrl.forward();
 
-    // Kick off oobCode validation immediately when the page loads.
-    // If expired, the BLoC will emit [codeError] before the user does anything.
     context
         .read<SetPasswordBloc>()
         .add(SetPasswordEvent.started(oobCode: widget.oobCode));
@@ -89,7 +59,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
   }
 
   void _onPasswordChanged() {
-    // Notify the BLoC on every keystroke so the requirements UI updates live.
     context.read<SetPasswordBloc>().add(
           SetPasswordEvent.passwordChanged(
             password: _passwordCtrl.text,
@@ -115,53 +84,51 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
     return Scaffold(
       backgroundColor:
           isDark ? AppColors.darkBackground : AppColors.lightBackground,
-      body: BlocConsumer<SetPasswordBloc, SetPasswordState>(
-        listener: _listener,
-        builder: (context, state) => state.map(
-          // ── Checking oobCode with Firebase ──
-          validating: (_) => const Center(
-            child: CircularProgressIndicator(color: AppColors.primary),
-          ),
-
-          // ── oobCode expired or already used ──
-          codeError: (s) => _CodeExpiredBody(
-            isDark: isDark,
-            message: s.message,
-          ),
-
-          // ── Show the password form ──
-          ready: (s) => _buildForm(
-            isDark: isDark,
-            email: s.email,
-            requirements: s.requirements,
-            isLoading: false,
-          ),
-
-          // ── Firebase call in progress ──
-          loading: (s) => _buildForm(
-            isDark: isDark,
-            email: s.email,
-            requirements: s.requirements,
-            isLoading: true,
-          ),
-
-          // ── Success is handled by the listener below ──
-          success: (_) => const SizedBox.shrink(),
-
-          // ── Error — keep form visible, snackbar shown by listener ──
-          failure: (s) => _buildForm(
-            isDark: isDark,
-            email: s.email,
-            requirements: s.requirements,
-            isLoading: false,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        behavior: HitTestBehavior.opaque,
+        child: BlocConsumer<SetPasswordBloc, SetPasswordState>(
+          listener: _listener,
+          builder: (context, state) => state.map(
+            validating: (_) => const Center(
+              child: CircularProgressIndicator(color: AppColors.primary),
+            ),
+            codeError: (s) => Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: AppConstants.maxFormWidth,
+                ),
+                child: _CodeExpiredBody(
+                  isDark: isDark,
+                  message: s.message,
+                ),
+              ),
+            ),
+            ready: (s) => _buildForm(
+              isDark: isDark,
+              email: s.email,
+              requirements: s.requirements,
+              isLoading: false,
+            ),
+            loading: (s) => _buildForm(
+              isDark: isDark,
+              email: s.email,
+              requirements: s.requirements,
+              isLoading: true,
+            ),
+            success: (_) => const SizedBox.shrink(),
+            failure: (s) => _buildForm(
+              isDark: isDark,
+              email: s.email,
+              requirements: s.requirements,
+              isLoading: false,
+            ),
           ),
         ),
       ),
     );
   }
 
-  /// Builds the scrollable hero + form layout used in [ready], [loading],
-  /// and [failure] states.
   Widget _buildForm({
     required bool isDark,
     required String email,
@@ -176,16 +143,23 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
             opacity: _fadeAnim,
             child: SlideTransition(
               position: _slideAnim,
-              child: SetPasswordFormSection(
-                isDark: isDark,
-                formKey: _formKey,
-                email: email,
-                passwordCtrl: _passwordCtrl,
-                confirmCtrl: _confirmCtrl,
-                requirements: requirements,
-                isLoading: isLoading,
-                onPasswordChanged: _onPasswordChanged,
-                onSubmit: _submit,
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: AppConstants.maxFormWidth,
+                  ),
+                  child: SetPasswordFormSection(
+                    isDark: isDark,
+                    formKey: _formKey,
+                    email: email,
+                    passwordCtrl: _passwordCtrl,
+                    confirmCtrl: _confirmCtrl,
+                    requirements: requirements,
+                    isLoading: isLoading,
+                    onPasswordChanged: _onPasswordChanged,
+                    onSubmit: _submit,
+                  ),
+                ),
               ),
             ),
           ),
@@ -196,7 +170,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
 
   void _listener(BuildContext context, SetPasswordState state) {
     state.mapOrNull(
-      // ── Password changed successfully — go to login ──
       success: (_) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -208,13 +181,8 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
             ),
           ),
         );
-        // Replace the entire stack with login — the user must sign in again
-        // with their new password. We use [go] (not [pop]) so the deep-link
-        // route is fully replaced and the back button doesn't go back to this page.
         context.go(RouteNames.login);
       },
-
-      // ── Something went wrong — show a floating error snackbar ──
       failure: (f) {
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
@@ -233,10 +201,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage>
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// _CodeExpiredBody — Shown when the oobCode is expired or already used
-// ─────────────────────────────────────────────────────────────────────────────
-
 class _CodeExpiredBody extends StatelessWidget {
   final bool isDark;
   final String message;
@@ -252,7 +216,6 @@ class _CodeExpiredBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Error icon
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -266,8 +229,6 @@ class _CodeExpiredBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-
-            // Title
             Text(
               l10n.linkExpiredTitle,
               textAlign: TextAlign.center,
@@ -280,8 +241,6 @@ class _CodeExpiredBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-
-            // Error message from Firebase
             Text(
               message,
               textAlign: TextAlign.center,
@@ -293,8 +252,6 @@ class _CodeExpiredBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 32),
-
-            // Go back and request a new link
             SizedBox(
               width: double.infinity,
               height: 52,
@@ -321,4 +278,3 @@ class _CodeExpiredBody extends StatelessWidget {
     );
   }
 }
-
